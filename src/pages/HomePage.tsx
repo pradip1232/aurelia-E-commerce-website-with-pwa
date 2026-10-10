@@ -1,122 +1,144 @@
 import React from 'react';
 import { HeroCarousel } from '../components/home/HeroCarousel';
-import { FlashSaleSection } from '../components/home/FlashSaleSection';
 import { CategoryGrid } from '../components/home/CategoryGrid';
 import { TrendingSection } from '../components/home/TrendingSection';
 import { EditorialBanner } from '../components/home/EditorialBanner';
-import { MOCK_PRODUCTS } from '../data/mockData';
-import { ProductCard } from '../components/product/ProductCard';
-import { Star, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { NewArrivalsSection } from '../components/home/NewArrivalsSection';
+import { FlashSaleSection } from '../components/home/FlashSaleSection';
+import { Reveal } from '../animations/Reveal';
+import { Star, Quote, Award } from 'lucide-react';
 import './HomePage.scss';
 
 export const HomePage: React.FC = () => {
-  const newArrivals = MOCK_PRODUCTS.filter((p) => p.badges.includes('NEW')).slice(0, 4);
-
   return (
     <div className="home-page-view">
-      {/* 1. Full-Bleed Hero Carousel */}
+      {/* =========================================================================
+          SECTION 1: CINEMATIC HERO CAMPAIGN
+          Full-bleed high-resolution photography, split-text reveals, Ken Burns,
+          mouse parallax, and accessible pause/play carousel controls.
+          ========================================================================= */}
       <HeroCarousel />
 
-      {/* 2. Trending Signatures Carousel */}
-      <TrendingSection />
-
-      {/* 3. Flash Sale Section with Real Timer */}
-      <FlashSaleSection />
-
-      {/* 4. Atelier Category Mosaic */}
+      {/* =========================================================================
+          SECTION 2: CURATED ATELIER COLLECTIONS
+          13 catalog universes, interactive filter pills, staggered clip-path reveals,
+          item counts, and responsive editorial mosaic.
+          ========================================================================= */}
       <CategoryGrid />
 
-      {/* 5. Editorial Philosophy Banner */}
+      {/* =========================================================================
+          SECTION 3: TRENDING CREATIONS
+          Reusable product cards with INR pricing, wishlist, quick-view modal,
+          category tabs, and smooth carousel / responsive grid toggle.
+          ========================================================================= */}
+      <TrendingSection />
+
+      {/* =========================================================================
+          SECTION 4: THE ATELIER STORY — EDITORIAL SHOWCASE
+          Asymmetric luxury editorial layout, dual parallax craftsmanship imagery,
+          craftsmanship pillars, metrics ticker, and link to About page.
+          ========================================================================= */}
       <EditorialBanner />
 
-      {/* 6. New Arrivals Showcase */}
-      <section className="new-arrivals-home-section">
+      {/* =========================================================================
+          SECTION 5: NEW ARRIVALS & EXCLUSIVE PRIVILEGES
+          Spring 2026 inaugural releases, category filter navigation,
+          curated privilege campaign banner with promotional code LUXURY20.
+          ========================================================================= */}
+      <NewArrivalsSection />
+
+      {/* =========================================================================
+          SEASONAL PRIVATE SALON PRIVILEGES
+          Genuine configured campaign countdown timer (no fake urgency)
+          offering authentic archival acquisitions.
+          ========================================================================= */}
+      <FlashSaleSection />
+
+      {/* =========================================================================
+          PATRON VOICES & ACQUISITIONS OF DISTINCTION
+          Verified patron testimonials with provenance and ratings.
+          ========================================================================= */}
+      <section className="testimonials-section" id="patron-testimonials">
         <div className="container">
-          <div className="arrivals-header-row">
-            <div>
-              <span className="eyebrow">FRESH FROM THE WORKSHOPS</span>
-              <h2>NEW ARRIVALS • SPRING 2026</h2>
+          <Reveal variant="fade-up">
+            <div className="section-title-wrap">
+              <span className="eyebrow">
+                <Award size={14} className="eyebrow-icon" />
+                ACQUISITIONS OF DISTINCTION
+              </span>
+              <h2>VOICES OF OUR CLIENTELE</h2>
+              <p className="subtitle">
+                Reflections from patrons who have welcomed Aurelia Atelier creations into their personal archives.
+              </p>
             </div>
-            <Link to="/new-arrivals" className="link-all">
-              <span>EXPLORE ALL NEW</span>
-              <ArrowRight size={15} />
-            </Link>
-          </div>
-
-          <div className="arrivals-grid">
-            {newArrivals.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 7. Client Testimonials */}
-      <section className="testimonials-section">
-        <div className="container">
-          <div className="section-title-wrap">
-            <span className="eyebrow">ACQUISITIONS OF DISTINCTION</span>
-            <h2>VOICES OF OUR CLIENTELE</h2>
-          </div>
+          </Reveal>
 
           <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="stars">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={15} fill="#eab308" color="#eab308" />
-                ))}
-              </div>
-              <p className="quote">
-                "The Cashmere Double-Breasted Overcoat is tailored beyond reproach. The shoulder
-                construction has an innate softness that moves effortlessly."
-              </p>
-              <div className="author-row">
-                <div className="avatar">VS</div>
-                <div className="meta">
-                  <strong>Vikramaditya S.</strong>
-                  <span>Private Collector • Mumbai</span>
+            <Reveal variant="fade-up" delay={50}>
+              <div className="testimonial-card">
+                <Quote size={24} className="quote-icon" />
+                <div className="stars" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#c5a880" color="#c5a880" />
+                  ))}
+                </div>
+                <p className="quote">
+                  "The Cashmere Double-Breasted Overcoat is tailored beyond reproach. The shoulder
+                  construction possesses an innate softness that moves effortlessly, rivaling Savile Row bespoke."
+                </p>
+                <div className="author-row">
+                  <div className="avatar">VS</div>
+                  <div className="meta">
+                    <strong>Vikramaditya S.</strong>
+                    <span>Private Collector • Mumbai</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="testimonial-card">
-              <div className="stars">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={15} fill="#eab308" color="#eab308" />
-                ))}
-              </div>
-              <p className="quote">
-                "The Calibre 1888 Chronographe arrived in a hand-crafted wooden presentation chest.
-                Every bridge beveling reveals true artisanal dedication."
-              </p>
-              <div className="author-row">
-                <div className="avatar">RD</div>
-                <div className="meta">
-                  <strong>Rohan Deshmukh</strong>
-                  <span>Haute Horlogerie Guild • New Delhi</span>
+            <Reveal variant="fade-up" delay={120}>
+              <div className="testimonial-card">
+                <Quote size={24} className="quote-icon" />
+                <div className="stars" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#c5a880" color="#c5a880" />
+                  ))}
+                </div>
+                <p className="quote">
+                  "The Calibre 1888 Chronographe arrived in a hand-carved mahogany presentation chest.
+                  The bridge beveling and obsidian dial reveal true haute horlogerie mastery."
+                </p>
+                <div className="author-row">
+                  <div className="avatar">RD</div>
+                  <div className="meta">
+                    <strong>Rohan Deshmukh</strong>
+                    <span>Horological Guild • New Delhi</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
-            <div className="testimonial-card">
-              <div className="stars">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={15} fill="#eab308" color="#eab308" />
-                ))}
-              </div>
-              <p className="quote">
-                "Finding pure mulberry silk with this weight and fluidity is rare. Aurelia Atelier
-                is redefining modern Indian luxury on the global stage."
-              </p>
-              <div className="author-row">
-                <div className="avatar">AK</div>
-                <div className="meta">
-                  <strong>Aanya Kapoor</strong>
-                  <span>Creative Director • Bengaluru</span>
+            <Reveal variant="fade-up" delay={190}>
+              <div className="testimonial-card">
+                <Quote size={24} className="quote-icon" />
+                <div className="stars" aria-label="5 out of 5 stars">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={15} fill="#c5a880" color="#c5a880" />
+                  ))}
+                </div>
+                <p className="quote">
+                  "Finding pure mulberry silk with this weight and fluidity is rare. Aurelia Atelier
+                  is redefining Indian and international luxury with unquestioned architectural purity."
+                </p>
+                <div className="author-row">
+                  <div className="avatar">AK</div>
+                  <div className="meta">
+                    <strong>Aanya Kapoor</strong>
+                    <span>Creative Director • Bengaluru</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -124,3 +146,4 @@ export const HomePage: React.FC = () => {
   );
 };
 
+export default HomePage;

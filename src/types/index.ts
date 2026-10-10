@@ -1,5 +1,17 @@
-// Product & Catalog Types
-export type CategorySlug = 'men' | 'women' | 'kids' | 'electronics' | 'home' | 'beauty' | 'accessories';
+export type CategorySlug =
+  | 'men'
+  | 'women'
+  | 'leathergoods'
+  | 'footwear'
+  | 'timepieces'
+  | 'jewelry'
+  | 'accessories'
+  | 'eyewear'
+  | 'fragrance'
+  | 'home'
+  | 'electronics'
+  | 'beauty'
+  | 'kids';
 
 export interface ProductVariant {
   id: string;

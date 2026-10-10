@@ -113,6 +113,19 @@
         color: var(--color-secondary);
       }
     }
+
+    .guarantee-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.72rem;
+      color: var(--color-text-secondary);
+
+      svg {
+        color: var(--color-secondary);
+      }
+    }
   }
 }
 
