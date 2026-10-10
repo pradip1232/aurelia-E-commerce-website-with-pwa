@@ -1,0 +1,22 @@
+.animation-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: transparent;
+  z-index: 10000;
+  pointer-events: none;
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #c5a880 0%, #dfc79b 50%, #c5a880 100%);
+    box-shadow: 0 0 8px rgba(197, 168, 128, 0.4);
+    will-change: width;
+    transition: width 90ms ease-out;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
+  }
+}

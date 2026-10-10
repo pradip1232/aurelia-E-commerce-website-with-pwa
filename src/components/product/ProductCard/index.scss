@@ -1,0 +1,277 @@
+@use '../../../styles/tokens' as tokens;
+@use '../../../styles/abstracts' as abs;
+
+.atelier-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: var(--radius-sm, 2px);
+  overflow: hidden;
+  transition: transform var(--duration-fast, 150ms) ease;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    background: #fafaf9;
+    border-radius: var(--radius-sm, 2px);
+  }
+
+  &__ranking {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 5;
+    width: 28px;
+    height: 28px;
+    background: var(--color-foreground, #1c1917);
+    color: var(--color-gold, #c5a880);
+    border-radius: var(--radius-full, 9999px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  &__badges {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__badge {
+    padding: 0.25rem 0.6rem;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    background: #1c1917;
+    color: #ffffff;
+
+    &--exclusive {
+      background: var(--color-gold-dark, #9b7e56);
+      color: #ffffff;
+    }
+
+    &--bestseller {
+      background: var(--color-foreground, #1c1917);
+      color: var(--color-gold, #c5a880);
+    }
+  }
+
+  &__wishlist-btn {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 5;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full, 9999px);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--color-foreground, #1c1917);
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: #ffffff;
+      color: #e11d48;
+      transform: scale(1.08);
+    }
+
+    &.is-active {
+      background: #ffffff;
+      color: #e11d48;
+    }
+  }
+
+  &__images-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__img-primary,
+  &__img-secondary {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &__img-secondary {
+    opacity: 0;
+  }
+
+  &:hover &__img-primary {
+    transform: scale(1.04);
+  }
+
+  &:hover &__img-secondary {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  &__actions-overlay {
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    right: 0.75rem;
+    z-index: 5;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:hover &__actions-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &__action-btn {
+    flex: 1;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--radius-sm, 2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-foreground, #1c1917);
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: #ffffff;
+      color: var(--color-gold, #c5a880);
+    }
+
+    &--primary {
+      background: var(--color-foreground, #1c1917);
+      color: #ffffff;
+      border-color: var(--color-foreground, #1c1917);
+
+      &:hover {
+        background: var(--color-gold, #c5a880);
+        color: #1c1917;
+      }
+    }
+  }
+
+  &__info {
+    padding: 1rem 0.25rem 0.5rem 0.25rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__brand-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.35rem;
+  }
+
+  &__brand {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--color-gold, #c5a880);
+    text-transform: uppercase;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-muted-foreground, #78716c);
+
+    svg {
+      color: #eab308;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-body, inherit);
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-foreground, #1c1917);
+    margin: 0 0 0.5rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__swatches {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__swatch-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+  }
+
+  &__swatch-more {
+    font-size: 10px;
+    color: var(--color-muted-foreground, #78716c);
+  }
+
+  &__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  &__current-price {
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 700;
+    color: var(--color-foreground, #1c1917);
+  }
+
+  &__mrp-price {
+    font-size: var(--text-xs, 0.75rem);
+    color: var(--color-muted-foreground, #a8a29e);
+    text-decoration: line-through;
+  }
+
+  &__discount-tag {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--color-rose-gold, #c5a880);
+  }
+}

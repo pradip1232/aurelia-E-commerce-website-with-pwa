@@ -1,0 +1,29 @@
+@import '@/styles/variables.scss';
+
+.ui-rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+
+  .star-icon {
+    color: #e5dec9;
+    transition: color var(--transition-fast);
+
+    &.filled {
+      color: #c9a24d;
+    }
+  }
+
+  .rating-score {
+    margin-left: 5px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .rating-count {
+    margin-left: 3px;
+    font-size: 0.72rem;
+    color: var(--color-muted);
+  }
+}

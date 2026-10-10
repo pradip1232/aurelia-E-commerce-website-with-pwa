@@ -1,0 +1,205 @@
+@use '../../../../styles/tokens' as tokens;
+@use '../../../../styles/abstracts' as abs;
+
+.atelier-hero {
+  position: relative;
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #0c0a09;
+  color: #ffffff;
+
+  @include abs.mq('md') {
+    min-height: calc(100vh - 76px);
+  }
+
+  &__bg-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  &__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(0.72) contrast(1.08);
+    transform: scale(1.02);
+    animation: slowZoomHero 16s ease-out infinite alternate;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(12, 10, 9, 0.45) 0%,
+      rgba(12, 10, 9, 0.3) 40%,
+      rgba(12, 10, 9, 0.75) 85%,
+      rgba(12, 10, 9, 0.95) 100%
+    );
+  }
+
+  &__content-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--container-max-width, 1440px);
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    @include abs.mq('md') {
+      padding: 7rem 2.5rem;
+    }
+  }
+
+  &__container {
+    max-width: 920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(197, 168, 128, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 0.45rem 1.25rem;
+    border-radius: var(--radius-full, 9999px);
+    margin-bottom: 2rem;
+
+    &-symbol {
+      color: var(--color-gold, #c5a880);
+      font-size: 0.75rem;
+    }
+
+    &-text {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      color: var(--color-gold-light, #f7efe6);
+      text-transform: uppercase;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-heading, serif);
+    font-size: clamp(2.2rem, 5.5vw, 4.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: 0.06em;
+    color: #ffffff;
+    margin: 0 0 1.75rem 0;
+    text-transform: uppercase;
+  }
+
+  &__title-accent {
+    display: block;
+    font-weight: 500;
+    color: var(--color-gold-light, #f7efe6);
+    background: linear-gradient(135deg, #ffffff 20%, #c5a880 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__subtitle {
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 680px;
+    margin: 0 0 2.75rem 0;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    height: 52px;
+    padding: 0 2.25rem;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: var(--radius-sm, 2px);
+    transition: all var(--duration-fast, 150ms) ease;
+
+    &--primary {
+      background: var(--color-gold, #c5a880);
+      color: #0c0a09;
+      border: 1px solid var(--color-gold, #c5a880);
+
+      &:hover {
+        background: #ffffff;
+        border-color: #ffffff;
+        color: #0c0a09;
+        transform: translateY(-2px);
+        box-shadow: 0 12px 24px rgba(197, 168, 128, 0.3);
+      }
+    }
+
+    &--secondary {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(8px);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: #ffffff;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+
+    .bounce-arrow {
+      animation: bounceArrow 1.8s infinite;
+    }
+  }
+}
+
+@keyframes slowZoomHero {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.06); }
+}
+
+@keyframes bounceArrow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
