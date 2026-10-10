@@ -1,0 +1,33 @@
+@import '@/styles/variables.scss';
+
+.ui-spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 162, 77, 0.2);
+  border-top-color: var(--color-secondary);
+  animation: uiSpin 0.75s linear infinite;
+
+  &--sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+  }
+
+  &--md {
+    width: 28px;
+    height: 28px;
+    border-width: 2.5px;
+  }
+
+  &--lg {
+    width: 44px;
+    height: 44px;
+    border-width: 3px;
+  }
+}
+
+@keyframes uiSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}

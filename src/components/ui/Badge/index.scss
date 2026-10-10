@@ -1,0 +1,45 @@
+@import '@/styles/variables.scss';
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius-xs);
+  line-height: 1.2;
+
+  &--new {
+    background: var(--color-primary);
+    color: #ffffff;
+  }
+
+  &--bestseller {
+    background: var(--color-secondary);
+    color: #ffffff;
+  }
+
+  &--sale {
+    background: var(--color-error);
+    color: #ffffff;
+  }
+
+  &--exclusive {
+    background: #4338ca;
+    color: #ffffff;
+  }
+
+  &--gold {
+    background: linear-gradient(135deg, #f5e1a4 0%, #d4af37 100%);
+    color: #121417;
+  }
+
+  &--outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+  }
+}

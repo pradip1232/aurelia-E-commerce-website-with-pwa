@@ -27,10 +27,11 @@
    - [Strict E-Commerce Security Isolation](#strict-e-commerce-security-isolation)
    - [Native Browser Omnibox & Search Bar Install Options](#native-browser-omnibox--search-bar-install-options)
    - [App-Like UI Components](#app-like-ui-components)
-6. [Global Modals & Navigation Components](#6-global-modals--navigation-components)
-7. [State Management Architecture (Zustand 5)](#7-state-management-architecture-zustand-5)
-8. [Installation & Getting Started](#8-installation--getting-started)
-9. [Build & Verification Commands](#9-build--verification-commands)
+6. [100% Mobile-Friendly & Native Ergonomics Architecture](#6-100-mobile-friendly--native-ergonomics-architecture)
+7. [Global Modals & Navigation Components](#7-global-modals--navigation-components)
+8. [State Management Architecture (Zustand 5)](#8-state-management-architecture-zustand-5)
+9. [Installation & Getting Started](#9-installation--getting-started)
+10. [Build & Verification Commands](#10-build--verification-commands)
 
 ---
 
@@ -417,14 +418,41 @@ Located at [`public/sw.js`](file:///F:/SMC/Clone/public/sw.js):
 
 ### App-Like UI Components
 * **[`usePWA.ts`](file:///F:/SMC/Clone/src/pwa/usePWA.ts)**: Central hook managing service worker registration, `beforeinstallprompt`, `appinstalled`, iOS Safari detection, standalone mode, and update detection.
-* **[`PWAInstallPrompt.tsx`](file:///F:/SMC/Clone/src/pwa/PWAInstallPrompt.tsx)**: Floating luxury prompt with app icon, title, install trigger, and 7-day dismissal cooldown stored in `localStorage`.
+* **[`PWAInstallPrompt.tsx`](file:///F:/SMC/Clone/src/pwa/PWAInstallPrompt.tsx)**: Dual-mode luxury prompt: Floating card on desktop (`>= 768px`) and native bottom sheet on mobile (`< 768px`) with 0.2s launch speed, rating, minimize drawer, and platform-specific CTAs.
 * **[`IOSInstallGuide.tsx`](file:///F:/SMC/Clone/src/pwa/IOSInstallGuide.tsx)**: Slide-up modal guide for iOS Safari users (Share ➔ Add to Home Screen ➔ Add).
 * **[`NetworkStatusBar.tsx`](file:///F:/SMC/Clone/src/pwa/NetworkStatusBar.tsx)**: Real-time top notification badge alerting when connection drops or is restored.
 * **[`PWAUpdateToast.tsx`](file:///F:/SMC/Clone/src/pwa/PWAUpdateToast.tsx)**: Subtle toast alerting users when a new version is available, triggering `SKIP_WAITING` and auto-reload.
 
 ---
 
-## 6. Global Modals & Navigation Components
+## 6. 100% Mobile-Friendly & Native Ergonomics Architecture
+
+The entire application is engineered for fluid responsiveness, touch ergonomics, and native app behavior across 320px to 4K displays:
+
+1. **Zero Horizontal Overflow Bleed**:
+   - `html`, `body`, `#root`, and layout wrappers strictly enforced with `overflow-x: hidden` and `max-width: 100vw`.
+2. **iOS Safari Zoom Prevention**:
+   - All input, textarea, and select form controls enforce `font-size: 16px !important` on screens `<= 768px` to stop iOS Safari from auto-zooming on focus.
+3. **iPhone Notch & Safe-Area Insets**:
+   - All sticky bars and footers leverage `env(safe-area-inset-bottom, 0px)` and `env(safe-area-inset-top, 0px)` tokens, ensuring iPhone home indicator bars never overlap UI elements.
+4. **Ergonomic Layered Stacking**:
+   - **Base viewport**: Persistent [`MobileBottomNav`](file:///F:/SMC/Clone/src/components/layout/MobileBottomNav.tsx) at `z-index: 850` (`height: calc(52px + env(safe-area-inset-bottom))`).
+   - **PDP Sticky Bar**: Product detail page sticky buy bar docks flush above bottom nav (`bottom: calc(52px + env(safe-area-inset-bottom))`, `z-index: 800`).
+   - **Back to Top**: Floats safely above bottom nav at `bottom: calc(72px + env(safe-area-inset-bottom))`.
+   - **Toast Notifications**: Docked above bottom nav at `bottom: calc(64px + env(safe-area-inset-bottom))`.
+   - **Mobile PWA Sheet**: Positioned at `bottom: calc(56px + env(safe-area-inset-bottom))`.
+5. **Mobile Native App Sheet Modals**:
+   - [`QuickViewModal`](file:///F:/SMC/Clone/src/components/modals/QuickViewModal.tsx) transforms into a full-width bottom sheet on `< 640px` with rounded top corners and swipeable scroll.
+   - [`SearchOverlay`](file:///F:/SMC/Clone/src/components/modals/SearchOverlay.tsx) expands to full mobile viewport with safe-area bottom padding.
+   - Drawer menus and filter sidebars feature `-webkit-overflow-scrolling: touch` with dedicated dismiss headers.
+6. **Adaptive Touch Grids & Snap Sliders**:
+   - Catalog grids fluidly scale from 4/3 columns on desktop down to 2 columns on mobile and 1 column on `< 360px`.
+   - Deals & trending sections convert to fluid touch sliders with CSS snap (`scroll-snap-type: x mandatory`).
+   - Cart item cards employ a 2x2 mobile CSS grid placing stepper and subtotal side-by-side.
+
+---
+
+## 7. Global Modals & Navigation Components
 
 - **Header (`Header.tsx`)**:
   - Sticky glassmorphic navbar with logo, primary navigation links with hover mega menus, search trigger with download pill, account link with auth indicator, wishlist counter, and shopping bag counter.
@@ -439,7 +467,7 @@ Located at [`public/sw.js`](file:///F:/SMC/Clone/public/sw.js):
 
 ---
 
-## 7. State Management Architecture (Zustand 5)
+## 8. State Management Architecture (Zustand 5)
 
 All global state is organized into modular Zustand stores with `persist` middleware:
 
@@ -453,7 +481,7 @@ All global state is organized into modular Zustand stores with `persist` middlew
 
 ---
 
-## 8. Installation & Getting Started
+## 9. Installation & Getting Started
 
 ### Prerequisites
 - Node.js (v18.0.0 or higher recommended)
@@ -478,7 +506,7 @@ The application will launch at `http://localhost:3000/`.
 
 ---
 
-## 9. Build & Verification Commands
+## 10. Build & Verification Commands
 
 ### TypeScript Compilation Check
 ```bash

@@ -1,0 +1,41 @@
+.animation-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  &--fade-up {
+    transform: translateY(32px);
+  }
+
+  &--fade-down {
+    transform: translateY(-32px);
+  }
+
+  &--fade-left {
+    transform: translateX(32px);
+  }
+
+  &--fade-right {
+    transform: translateX(-32px);
+  }
+
+  &--scale {
+    transform: scale(0.92);
+  }
+
+  &--fade {
+    transform: none;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
