@@ -6,7 +6,7 @@
   padding-bottom: 80px;
 
   @media (max-width: 768px) {
-    padding-bottom: 140px; /* Space for mobile sticky purchase bar + bottom nav */
+    padding-bottom: calc(140px + env(safe-area-inset-bottom, 0px)); /* Space for mobile sticky purchase bar + bottom nav */
   }
 }
 
@@ -832,7 +832,7 @@
 .mobile-sticky-purchase-bar {
   display: none;
   position: fixed;
-  bottom: 52px; /* Just above compact mobile bottom nav */
+  bottom: calc(52px + env(safe-area-inset-bottom, 0px)); /* Just above compact mobile bottom nav */
   left: 0;
   right: 0;
   height: 60px;

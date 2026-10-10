@@ -250,6 +250,7 @@
 
   @media (max-width: 640px) {
     padding: 36px 20px;
+    padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
   }
 
   .portal-container {
@@ -302,6 +303,10 @@
         font-weight: 400;
         letter-spacing: 0.02em;
         margin-bottom: 10px;
+
+        @media (max-width: 480px) {
+          font-size: 1.7rem;
+        }
       }
 
       p {

@@ -2,6 +2,10 @@
 
 .checkout-page {
   padding-bottom: 80px;
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .checkout-minimal-header {

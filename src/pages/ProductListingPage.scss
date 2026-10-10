@@ -40,6 +40,10 @@
     font-size: 2.8rem;
     margin-bottom: 10px;
     letter-spacing: 0.05em;
+
+    @media (max-width: 640px) {
+      font-size: 1.85rem;
+    }
   }
 
   .plp-sub {
@@ -52,6 +56,10 @@
 .plp-layout-container {
   padding-top: 30px;
   padding-bottom: 80px;
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .plp-toolbar {
@@ -61,6 +69,18 @@
   padding-bottom: 20px;
   border-bottom: 1px solid var(--color-border-light);
   margin-bottom: 30px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+
+    .toolbar-left,
+    .toolbar-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
 
   .toolbar-left {
     display: flex;
@@ -189,11 +209,14 @@
     left: 0;
     bottom: 0;
     width: 320px;
+    max-width: 86vw;
     background: var(--color-surface);
     z-index: 1200;
     padding: 24px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
     box-shadow: var(--shadow-lg);
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     transform: translateX(-100%);
     transition: transform var(--transition-normal);
 
@@ -406,6 +429,11 @@
       @media (max-width: 768px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 14px;
+      }
+
+      @media (max-width: 360px) {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
     }
 

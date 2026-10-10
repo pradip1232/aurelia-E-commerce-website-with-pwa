@@ -265,9 +265,15 @@
 
 .drawer-footer {
   padding: 20px 24px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   background: var(--color-surface);
   border-top: 1px solid var(--color-border-light);
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.03);
+
+  @media (max-width: 480px) {
+    padding: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
 
   .promo-code-section {
     margin-bottom: 16px;

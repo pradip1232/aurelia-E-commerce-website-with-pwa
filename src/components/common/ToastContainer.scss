@@ -13,7 +13,7 @@
   width: calc(100% - 48px);
 
   @media (max-width: 768px) {
-    bottom: 74px; /* Above mobile bottom nav */
+    bottom: calc(64px + env(safe-area-inset-bottom, 0px)); /* Above mobile bottom nav */
     right: 16px;
     left: 16px;
     width: auto;

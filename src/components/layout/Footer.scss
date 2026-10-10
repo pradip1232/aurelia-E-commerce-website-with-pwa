@@ -6,7 +6,7 @@
   margin-top: 80px;
 
   @media (max-width: 768px) {
-    margin-bottom: 52px; /* For compact mobile bottom nav */
+    margin-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); /* For compact mobile bottom nav */
   }
 }
 

@@ -60,7 +60,7 @@
 
   // Safe positioning above mobile bottom navigation bar on mobile/tablet
   @media (max-width: ($bp-desktop - 1px)) {
-    bottom: 84px;
+    bottom: calc(72px + env(safe-area-inset-bottom, 0px));
     right: 18px;
     width: 44px;
     height: 44px;

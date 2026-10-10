@@ -4,6 +4,10 @@
   padding: 60px 0 100px 0;
   background: #fdfaf6;
   min-height: 80vh;
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .success-container {

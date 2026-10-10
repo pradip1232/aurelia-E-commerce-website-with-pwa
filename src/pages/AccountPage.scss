@@ -2,6 +2,10 @@
 
 .account-page {
   padding: 40px 0 80px 0;
+
+  @media (max-width: 768px) {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
 }
 
 .auth-guard-wrap {

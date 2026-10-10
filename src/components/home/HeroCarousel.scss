@@ -10,6 +10,11 @@
   align-items: center;
   overflow: hidden;
   background: #0f1115;
+
+  @media (max-width: 640px) {
+    min-height: 480px;
+    height: 75vh;
+  }
 }
 
 .hero-background-wrap {
@@ -55,6 +60,11 @@
   height: 100%;
   padding-top: 80px;
   padding-bottom: 40px;
+
+  @media (max-width: 640px) {
+    padding-top: 40px;
+    padding-bottom: 24px;
+  }
 }
 
 .hero-copy-block {
@@ -75,9 +85,9 @@
   }
 
   .hero-title {
-    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-size: clamp(1.85rem, 5vw, 4rem);
     color: #ffffff;
-    line-height: 1.1;
+    line-height: 1.15;
     margin-bottom: 16px;
     font-weight: 500;
   }
