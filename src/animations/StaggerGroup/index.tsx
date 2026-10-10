@@ -1,4 +1,5 @@
 import React, { Children, cloneElement, isValidElement, ReactNode } from 'react';
+
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import './index.scss';

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+
 import { useUIStore } from '../../../stores/useUIStore';
 import { MOCK_PRODUCTS, CATEGORIES_CONFIG } from '../../../data/mockData';
 import { Search, X, TrendingUp, Clock, ArrowRight, Download, Smartphone } from 'lucide-react';

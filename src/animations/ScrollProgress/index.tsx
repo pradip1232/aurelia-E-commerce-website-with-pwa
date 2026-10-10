@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import './index.scss';
 

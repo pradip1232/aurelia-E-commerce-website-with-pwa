@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useReducedMotion } from '../../hooks/useReducedMotion';
 import './index.scss';

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+
 /**
  * Hook to update browser document title dynamically
  */

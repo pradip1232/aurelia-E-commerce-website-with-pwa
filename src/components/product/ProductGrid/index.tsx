@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Product } from '../../../types';
 import { ProductCard } from '../ProductCard';
 import { Skeleton } from '../../ui/Skeleton';

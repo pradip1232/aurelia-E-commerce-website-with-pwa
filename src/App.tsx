@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/HomePage';
@@ -12,11 +14,30 @@ import { AccountPage } from './pages/AccountPage';
 import { AuthPage } from './pages/AuthPage';
 import { AboutPage, ContactPage, FAQPage, NotFoundPage } from './pages/StaticPages';
 import './styles/variables.scss';
+import { MainLayout } from './layouts/MainLayout';
+import {
+  HomePage,
+  ProductListingPage,
+  ProductDetailPage,
+  CartPage,
+  CheckoutPage,
+  OrderSuccessPage,
+  OrdersPage,
+  WishlistPage,
+  AccountPage,
+  AuthPage,
+  AboutPage,
+  ContactPage,
+  FAQPage,
+  NotFoundPage,
+} from './pages';
+import './styles/main.scss';
 
 export const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
+      <Route path="/" element={<MainLayout />}>
         {/* Core Discovery Routes */}
         <Route index element={<HomePage />} />
         <Route path="shop" element={<ProductListingPage />} />
