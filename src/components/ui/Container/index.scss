@@ -1,0 +1,26 @@
+@import '@/styles/variables.scss';
+
+.ui-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  @media (max-width: 768px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  &--default {
+    max-width: var(--container-max);
+  }
+
+  &--narrow {
+    max-width: 980px;
+  }
+
+  &--fluid {
+    max-width: 100%;
+  }
+}
