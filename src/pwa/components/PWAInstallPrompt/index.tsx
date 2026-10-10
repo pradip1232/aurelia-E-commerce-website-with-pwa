@@ -39,7 +39,7 @@ export const PWAInstallPrompt: React.FC = () => {
             <button
               type="button"
               className="btn-dismiss"
-              onClick={dismissInstallPrompt}
+              onClick={() => dismissInstallPrompt()}
               aria-label="Dismiss installation prompt"
             >
               <X size={15} />
@@ -56,7 +56,7 @@ export const PWAInstallPrompt: React.FC = () => {
             <button
               type="button"
               className="btn-install-secondary"
-              onClick={dismissInstallPrompt}
+              onClick={() => dismissInstallPrompt()}
             >
               Not Now
             </button>
@@ -136,7 +136,7 @@ export const PWAInstallPrompt: React.FC = () => {
               <button
                 type="button"
                 className="btn-mobile-close"
-                onClick={dismissInstallPrompt}
+                onClick={() => dismissInstallPrompt()}
                 aria-label="Dismiss app install banner"
               >
                 <X size={18} />
@@ -191,7 +191,7 @@ export const PWAInstallPrompt: React.FC = () => {
                 <button
                   type="button"
                   className="btn-mobile-never"
-                  onClick={dismissInstallPrompt}
+                  onClick={() => dismissInstallPrompt()}
                 >
                   Don't ask again
                 </button>

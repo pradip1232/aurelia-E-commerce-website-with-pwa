@@ -4,9 +4,15 @@ import './index.scss';
 
 export interface ScrollProgressProps {
   className?: string;
+  position?: 'top' | 'bottom';
+  height?: number;
 }
 
-export const ScrollProgress: React.FC<ScrollProgressProps> = ({ className = '' }) => {
+export const ScrollProgress: React.FC<ScrollProgressProps> = ({
+  className = '',
+  position = 'top',
+  height = 2.5
+}) => {
   const [progress, setProgress] = useState(0);
   const prefersReduced = useReducedMotion();
 
@@ -41,7 +47,18 @@ export const ScrollProgress: React.FC<ScrollProgressProps> = ({ className = '' }
   if (prefersReduced) return null;
 
   return (
-    <div className={`animation-scroll-progress ${className}`} role="progressbar" aria-valuenow={Math.round(progress)} aria-valuemin={0} aria-valuemax={100}>
+    <div
+      className={`animation-scroll-progress position-${position} ${className}`}
+      style={{
+        height: `${height}px`,
+        top: position === 'top' ? 0 : 'auto',
+        bottom: position === 'bottom' ? 0 : 'auto'
+      }}
+      role="progressbar"
+      aria-valuenow={Math.round(progress)}
+      aria-valuemin={0}
+      aria-valuemax={100}
+    >
       <div className="progress-fill" style={{ width: `${progress}%` }} />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { useAuthStore } from '../stores/useAuthStore';
-import { useUIStore } from '../stores/useUIStore';
+import { useAuthStore } from '../../stores/useAuthStore';
+import { useUIStore } from '../../stores/useUIStore';
 import {
   ArrowRight,
   ShieldCheck,
