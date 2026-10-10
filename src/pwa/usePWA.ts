@@ -113,6 +113,12 @@ export function usePWA() {
     const installed = checkIsInstalled();
     setIsInstalled(installed);
 
+    // On iOS Safari, beforeinstallprompt never fires natively.
+    // If not running in standalone mode and prompt not dismissed, enable installability for iOS
+    if (isAppleDevice && !installed && !isPromptDismissed()) {
+      setIsInstallable(true);
+    }
+
     // 1. Service Worker Registration
     if ('serviceWorker' in navigator && (typeof process === 'undefined' || process.env?.NODE_ENV !== 'test')) {
       const registerServiceWorker = () => {
