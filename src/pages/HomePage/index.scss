@@ -1,0 +1,134 @@
+@use '../../styles/tokens' as tokens;
+@use '../../styles/abstracts' as abs;
+
+.atelier-home-page {
+  width: 100%;
+  overflow-x: hidden;
+
+  &__container {
+    max-width: var(--container-max-width, 1440px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+
+    @include abs.mq('md') {
+      padding: 0 2.5rem;
+    }
+  }
+
+  &__testimonials {
+    padding: 6rem 0;
+    background-color: var(--color-muted, #fbfaf8);
+    border-top: 1px solid var(--color-border, #e7e5e4);
+
+    @include abs.mq('md') {
+      padding: 8rem 0;
+    }
+  }
+
+  &__test-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 3.5rem auto;
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      color: var(--color-gold, #c5a880);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .title {
+      font-family: var(--font-heading, serif);
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-foreground, #1c1917);
+      margin: 0 0 0.75rem 0;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: var(--text-sm, 0.875rem);
+      color: var(--color-muted-foreground, #78716c);
+      margin: 0;
+    }
+  }
+
+  &__test-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @include abs.mq('md') {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: #ffffff;
+      border: 1px solid var(--color-border, #e7e5e4);
+      border-radius: var(--radius-sm, 2px);
+      padding: 2.25rem 2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+
+      .stars {
+        display: flex;
+        gap: 0.25rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .quote {
+        font-family: var(--font-heading, serif);
+        font-size: var(--text-base, 1rem);
+        line-height: 1.65;
+        color: var(--color-foreground, #1c1917);
+        font-style: italic;
+        margin: 0 0 2rem 0;
+        flex: 1;
+      }
+
+      .author-row {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--color-border, #f5f5f4);
+
+        .avatar {
+          width: 38px;
+          height: 38px;
+          border-radius: var(--radius-full, 9999px);
+          background: #1c1917;
+          color: var(--color-gold, #c5a880);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.05em;
+        }
+
+        .meta {
+          display: flex;
+          flex-direction: column;
+
+          strong {
+            font-size: var(--text-xs, 0.75rem);
+            color: var(--color-foreground, #1c1917);
+          }
+
+          span {
+            font-size: 11px;
+            color: var(--color-muted-foreground, #78716c);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+@use '../../../styles/tokens' as tokens;
+@use '../../../styles/abstracts' as abs;
+
+.atelier-variant-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.65rem;
+  }
+
+  &__label {
+    font-size: var(--text-xs, 0.75rem);
+    letter-spacing: var(--letter-spacing-wider, 0.05em);
+    color: var(--color-muted-foreground, #78716c);
+
+    strong {
+      color: var(--color-foreground, #1c1917);
+      margin-left: 0.25rem;
+    }
+  }
+
+  &__size-guide {
+    background: transparent;
+    border: none;
+    font-size: var(--text-xs, 0.75rem);
+    color: var(--color-foreground, #1c1917);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      color: var(--color-gold, #c5a880);
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  &__color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-full, 9999px);
+    border: 1px solid var(--color-border, #d6d3d1);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    &.is-selected {
+      transform: scale(1.15);
+      border-color: var(--color-foreground, #1c1917);
+      box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--color-foreground, #1c1917);
+    }
+
+    .check-icon {
+      color: #fff;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
+    }
+  }
+
+  &__sizes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__size-btn {
+    min-width: 44px;
+    height: 40px;
+    padding: 0 0.85rem;
+    background: transparent;
+    border: 1px solid var(--color-border, #e7e5e4);
+    border-radius: var(--radius-sm, 2px);
+    font-size: var(--text-xs, 0.75rem);
+    font-weight: var(--font-weight-medium, 500);
+    color: var(--color-foreground, #1c1917);
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      border-color: var(--color-foreground, #1c1917);
+    }
+
+    &.is-selected {
+      background: var(--color-foreground, #1c1917);
+      color: #fff;
+      border-color: var(--color-foreground, #1c1917);
+    }
+  }
+}

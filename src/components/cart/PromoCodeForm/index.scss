@@ -1,0 +1,171 @@
+@use '../../../styles/tokens' as tokens;
+@use '../../../styles/abstracts' as abs;
+
+.atelier-promo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &__applied {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: var(--radius-sm, 2px);
+
+    &-info {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+
+      .check-icon {
+        color: #16a34a;
+      }
+
+      strong {
+        font-size: var(--text-xs, 0.75rem);
+        color: #166534;
+        display: block;
+      }
+
+      span {
+        font-size: 11px;
+        color: #15803d;
+      }
+    }
+  }
+
+  &__remove-btn {
+    background: transparent;
+    border: none;
+    color: #16a34a;
+    cursor: pointer;
+    padding: 0.25rem;
+
+    &:hover {
+      color: #b91c1c;
+    }
+  }
+
+  &__input-group {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid var(--color-border, #e7e5e4);
+    border-radius: var(--radius-sm, 2px);
+    overflow: hidden;
+    padding-left: 0.75rem;
+
+    .tag-icon {
+      color: var(--color-muted-foreground, #a8a29e);
+      flex-shrink: 0;
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 0.75rem 0.5rem;
+      font-size: var(--text-xs, 0.75rem);
+      font-family: inherit;
+      letter-spacing: 0.05em;
+
+      &::placeholder {
+        color: #a8a29e;
+      }
+    }
+
+    .apply-btn {
+      background: var(--color-foreground, #1c1917);
+      color: #ffffff;
+      border: none;
+      padding: 0 1.25rem;
+      height: 100%;
+      align-self: stretch;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background: var(--color-gold, #c5a880);
+        color: #1c1917;
+      }
+    }
+  }
+
+  &__toggle-list {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    color: var(--color-gold, #c5a880);
+    text-align: left;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__coupons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.25rem;
+  }
+
+  &__coupon-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #fafaf9;
+    border: 1px dashed var(--color-border, #d6d3d1);
+    border-radius: 2px;
+
+    .coupon-info {
+      .code {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color: var(--color-foreground, #1c1917);
+        display: block;
+      }
+
+      .desc {
+        font-size: 10px;
+        color: var(--color-muted-foreground, #78716c);
+        margin: 2px 0;
+      }
+
+      .min-val {
+        font-size: 9px;
+        color: var(--color-muted-foreground, #a8a29e);
+      }
+    }
+
+    .quick-apply-btn {
+      background: #ffffff;
+      border: 1px solid var(--color-border, #e7e5e4);
+      padding: 0.35rem 0.75rem;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--color-foreground, #1c1917);
+        color: #fff;
+      }
+    }
+  }
+}
