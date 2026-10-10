@@ -171,21 +171,30 @@
 ### Home Page (`/`)
 * **Component**: [`HomePage.tsx`](file:///F:/SMC/Clone/src/pages/HomePage.tsx)
 * **Functions & Features**:
-  1. **Hero Campaign Carousel (`HeroCarousel.tsx`)**:
-     - Auto-advancing seasonal campaign slider with high-resolution photography.
-     - Luxury typography overlays, season badges (`SS26 Prêt-à-Porter`), and direct collection CTAs.
-     - Controls include previous/next circular buttons, slide progress bars, and pause on hover.
-  2. **Category Grid (`CategoryGrid.tsx`)**:
-     - Visual grid of major atelier collections (Men, Women, Accessories, Electronics, Home & Living, Beauty).
-     - Hover scale transition and direct routing to `/category/:categorySlug`.
-  3. **Trending Showcase (`TrendingSection.tsx`)**:
-     - Curated carousel of trending creations with filter tabs (*All*, *Haute Couture*, *Leathercraft*, *Timepieces*).
-     - Direct "Quick View" and "Add to Bag" triggers on each product card.
-  4. **Atelier Craftsmanship Editorial (`EditorialBanner.tsx`)**:
-     - Full-width storytelling section highlighting double-faced cashmere, hand-stitched leather, and ethical atelier sourcing.
-  5. **Limited Flash Sale (`FlashSaleSection.tsx`)**:
-     - Live decreasing countdown timer (hours, minutes, seconds) for exclusive limited-run creations.
-     - Stock availability progress bars highlighting urgency.
+  1. **Section 1: Cinematic Hero Campaign (`HeroCarousel.tsx`)**:
+     - High-resolution editorial photography featuring the new SS26 Haute Prêt-à-Porter campaign banner (`/images/campaigns/hero-banner-ss26.png`).
+     - Split-word text reveal animations with staggered keyframe timing.
+     - Mouse-movement subtle parallax depth and smooth Ken Burns image scaling.
+     - Accessible playback controls with Play/Pause toggle, previous/next navigation buttons, slide numbers (`01 / 04`), and animated linear progress fill indicators.
+     - Touch swipe gesture support for mobile devices.
+  2. **Section 2: Curated Atelier Collections (`CategoryGrid.tsx`)**:
+     - 13 catalog universes with interactive category filter tabs (*Featured Mosaic*, *Couture & Footwear*, *Timepieces & Jewels*, *Leathergoods & Maison*, *View All 13 Realms*).
+     - Staggered clip-path entrance reveals with hover scale and luxury typography metadata.
+     - Interactive universe quick-links bar at the section footer for rapid catalog traversal.
+  3. **Section 3: Trending Creations (`TrendingSection.tsx`)**:
+     - Reusable product cards with photography, INR prices, ratings, badges, wishlist toggle, and quick-view support.
+     - Dual view modes: smooth horizontal snap carousel with navigation arrows, or responsive 4-column product grid.
+     - Functional luxury category switcher (*All Signatures*, *Men's*, *Women's*, *Timepieces*, *Leathergoods*, *Jewellery*).
+  4. **Section 4: The Atelier Story — Editorial Showcase (`EditorialBanner.tsx`)**:
+     - Asymmetrical luxury editorial layout with dual parallax imagery (master pattern-making + inset noble textile detail with Florentine wax seal).
+     - Storytelling on craftsmanship, noble materials, and traceable origin.
+     - Craftsmanship pillars and live metrics ticker (*98+ Master Craftsmen*, *100% Noble Fibers*, *48H White-Glove Dispatch*).
+     - Actionable CTA leading to the `/about` heritage chronicle.
+  5. **Section 5: New Arrivals & Exclusive Offers (`NewArrivalsSection.tsx` & `FlashSaleSection.tsx`)**:
+     - Dedicated Spring 2026 inaugural drop showcase with category filters.
+     - Exclusive client privilege banner with one-click copyable promo code `LUXURY20` (20% off above ₹25,000).
+     - Private Salon Privileges with genuine, transparent countdown timer (closing at end of day, no misleading urgency or fake stock claims).
+     - Verified patron testimonials and acquisitions of distinction.
 
 ---
 
