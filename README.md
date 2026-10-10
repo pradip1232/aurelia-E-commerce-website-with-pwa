@@ -99,60 +99,69 @@
 │   │   ├── useOrderStore.ts          # Order history, placement, live tracking
 │   │   ├── useUIStore.ts             # Search modal, mobile drawer, quick view
 │   │   └── useWishlistStore.ts       # Saved creations bookmarking
+│   ├── animations/                   # Scroll-triggered animation primitives (index.tsx + index.scss)
+│   │   ├── AnimatedCounter/          # Eased number counter for metrics
+│   │   ├── MagneticButton/           # Cursor-tracking luxury magnetic button
+│   │   ├── PageTransition/           # Smooth route transition wrapper
+│   │   ├── Parallax/                 # Scroll-linked depth transform container
+│   │   ├── Reveal/                   # Intersection observer (fade, slide, scale)
+│   │   ├── ScrollProgress/           # Fixed gold progress indicator
+│   │   ├── StaggerGroup/             # Cascading children animation wrapper
+│   │   ├── TextReveal/               # Cinematic typography text reveal
+│   │   ├── animation.config.ts       # Timing, bezier curves & spring physics presets
+│   │   └── index.ts                  # Barrel export
 │   ├── pwa/                          # Progressive Web App React integration
-│   │   ├── usePWA.ts                 # Hook managing SW events, install prompts, network
-│   │   ├── PWAInstallPrompt.tsx      # Floating luxury install card with cooldown
-│   │   ├── IOSInstallGuide.tsx       # Slide-up modal guide for iOS Safari users
-│   │   ├── NetworkStatusBar.tsx      # Online / offline top pill notification
-│   │   ├── PWAUpdateToast.tsx        # New version notification with skip-waiting
-│   │   ├── PWA.scss                  # Luxury PWA styles respecting safe-area insets
+│   │   ├── components/               # PWA UI components (index.tsx + index.scss)
+│   │   │   ├── IOSInstallGuide/      # Safari Add-to-Home-Screen guide
+│   │   │   ├── NetworkStatusBar/     # Online / offline connectivity banner
+│   │   │   ├── PWAInstallPrompt/     # Desktop floating prompt & mobile bottom sheet
+│   │   │   └── PWAUpdateToast/       # Service worker update notification
+│   │   ├── usePWA.ts                 # Lifecycle hook for SW, install prompts, network state
 │   │   └── index.ts                  # Barrel export
 │   ├── components/
-│   │   ├── cart/
-│   │   │   ├── CartDrawer.tsx        # Slide-over quick bag drawer with milestone bar
-│   │   │   └── CartDrawer.scss
-│   │   ├── common/
-│   │   │   ├── ToastContainer.tsx    # Stacked notification toast system
-│   │   │   └── ToastContainer.scss
-│   │   ├── home/
-│   │   │   ├── HeroCarousel.tsx      # 100vh autoplay campaign slider
-│   │   │   ├── CategoryGrid.tsx      # Curated category cards with image zoom
-│   │   │   ├── TrendingSection.tsx   # Trending items showcase with category tabs
-│   │   │   ├── EditorialBanner.tsx   # Atelier craftsmanship storytelling
-│   │   │   └── FlashSaleSection.tsx  # Countdown timer & limited stock progress
-│   │   ├── layout/
-│   │   │   ├── Header.tsx            # Navbar, mega menu, search trigger & download pill
-│   │   │   ├── Header.scss
-│   │   │   ├── Footer.tsx            # Multi-column luxury footer with newsletter
-│   │   │   ├── Footer.scss
-│   │   │   ├── Layout.tsx            # Main storefront shell mounting PWA overlays
-│   │   │   ├── MobileBottomNav.tsx   # Persistent mobile bottom app dock
-│   │   │   └── MobileBottomNav.scss
-│   │   ├── modals/
-│   │   │   ├── SearchOverlay.tsx     # Live search modal with app download options
-│   │   │   ├── SearchOverlay.scss
-│   │   │   ├── QuickViewModal.tsx    # Fast product preview modal
-│   │   │   └── QuickViewModal.scss
-│   │   └── product/
-│   │       ├── ProductCard.tsx       # Product card with hover image toggle & actions
-│   │       └── ProductCard.scss
-│   ├── pages/
-│   │   ├── HomePage.tsx              # Boutique landing page
-│   │   ├── ProductListingPage.tsx    # Catalog with multi-faceted filtering & sorting
-│   │   ├── ProductDetailPage.tsx     # 2-column showroom with hover zoom & pincode
-│   │   ├── CartPage.tsx              # Full bag overview with coupon input
-│   │   ├── CheckoutPage.tsx          # Standalone 3-step address & payment checkout
-│   │   ├── OrderSuccessPage.tsx      # Confirmation receipt & confetti celebration
-│   │   ├── OrdersPage.tsx            # Order tracking timeline & invoice actions
-│   │   ├── WishlistPage.tsx          # Saved products collection
-│   │   ├── AccountPage.tsx           # Customer profile, addresses, and settings
-│   │   ├── AuthPage.tsx              # Tabbed login and registration portal
-│   │   └── StaticPages.tsx           # About, Contact, Support, FAQ, and 404 pages
-│   ├── styles/
-│   │   ├── variables.scss            # Master CSS custom properties & base resets
-│   │   └── global.scss               # Global typography & layout rules
+│   │   ├── ui/                       # Design system primitives (index.tsx + index.scss)
+│   │   │   ├── Badge/, Button/, Container/, Divider/, EmptyState/, ErrorState/
+│   │   │   ├── IconButton/, PriceDisplay/, RatingStars/, Skeleton/, Spinner/, Typography/
+│   │   │   └── index.ts
+│   │   ├── forms/                    # Form components (index.tsx + index.scss)
+│   │   │   ├── Checkbox/, FormField/, PasswordInput/, Select/, TextInput/
+│   │   │   └── index.ts
+│   │   ├── overlays/                 # Modal & drawer dialogs (index.tsx + index.scss)
+│   │   │   ├── Drawer/, Modal/, QuickViewModal/, SearchOverlay/, Toast/
+│   │   │   └── index.ts
+│   │   ├── product/                  # Catalog & commerce components (index.tsx + index.scss)
+│   │   │   ├── AddToCartButton/, ProductCard/, ProductGallery/, ProductGrid/
+│   │   │   ├── VariantSelector/, WishlistButton/
+│   │   │   └── index.ts
+│   │   └── cart/                     # Bag & summary components (index.tsx + index.scss)
+│   │       ├── CartDrawer/, CartItem/, CartSummary/, PromoCodeForm/
+│   │       └── index.ts
+│   ├── features/home/sections/       # 5 Cinematic Homepage Sections (index.tsx + index.scss)
+│   │   ├── HeroSection/              # Full-bleed editorial showcase
+│   │   ├── FeaturedCollections/      # Curated lookbook with interactive hover zoom
+│   │   ├── TrendingCreations/        # Catalog switcher with live product cards
+│   │   ├── AtelierStory/             # Heritage craftsmanship narrative & metrics
+│   │   ├── NewArrivals/              # Fresh seasonal runway drops showcase
+│   │   ├── NewsletterSection/        # Private client salon subscription
+│   │   └── index.ts
+│   ├── layouts/                      # Layout shell components (index.tsx + index.scss)
+│   │   ├── AnnouncementBar/, Breadcrumbs/, Footer/, Header/
+│   │   ├── MainLayout/, MobileNavigation/, ScrollToTop/
+│   │   └── index.ts
+│   ├── pages/                        # Dedicated page folders (index.tsx + index.scss)
+│   │   ├── AboutPage/, AccountPage/, AuthPage/, CartPage/, CheckoutPage/
+│   │   ├── ContactPage/, FAQPage/, HomePage/, NotFoundPage/, OrdersPage/
+│   │   ├── OrderSuccessPage/, ProductDetailPage/, ProductListingPage/, WishlistPage/
+│   │   └── index.ts
+│   ├── styles/                       # Centralized SCSS Architecture
+│   │   ├── tokens/                   # _colors, _typography, _spacing, _shadows, _motion, _z-index
+│   │   ├── abstracts/                # _breakpoints, _mixins, _functions
+│   │   ├── base/                     # _reset, _typography, _accessibility
+│   │   ├── utilities/                # _layout
+│   │   ├── variables.scss            # Legacy compatibility variables
+│   │   └── main.scss                 # Bundled master stylesheet
 │   └── data/
-│       └── mockData.ts               # Product catalog, categories, mock orders & reviews
+│       └── mockData.ts               # Catalog dataset, mock orders, and reviews
 ```
 
 ---
