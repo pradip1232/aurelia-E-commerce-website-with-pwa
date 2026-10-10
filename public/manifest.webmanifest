@@ -1,0 +1,95 @@
+{
+  "name": "AURELIA ATELIER — Luxury Prêt-à-Porter",
+  "short_name": "AURELIA",
+  "description": "Masterfully tailored luxury prêt-à-porter, cashmere coats, and architectural wardrobe essentials.",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#121316",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "fashion"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/screenshot-desktop.png",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Aurelia Atelier — Luxury Prêt-à-Porter Desktop Storefront"
+    },
+    {
+      "src": "/screenshots/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Aurelia Atelier — Mobile Prêt-à-Porter Experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "New Arrivals",
+      "short_name": "New",
+      "description": "Browse the latest seasonal haute releases",
+      "url": "/new-arrivals",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Men's Collection",
+      "short_name": "Men",
+      "description": "Tailored outerwear, suiting and knitwear",
+      "url": "/category/men",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Women's Collection",
+      "short_name": "Women",
+      "description": "Silks, gowns and structured coats",
+      "url": "/category/women",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Shopping Bag",
+      "short_name": "Bag",
+      "description": "View items in your current shopping bag",
+      "url": "/cart",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
+  "prefer_related_applications": false
+}

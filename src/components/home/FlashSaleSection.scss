@@ -1,0 +1,174 @@
+@import "../../styles/variables.scss";
+
+.flash-sale-section {
+  padding: 80px 0;
+  background: #fdfaf6;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.flash-sale-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+
+  @media (max-width: 860px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .title-block {
+    .badge-sale-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: var(--color-error-bg);
+      border: 1px solid rgba(185, 28, 28, 0.2);
+      color: var(--color-error);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      border-radius: var(--radius-xs);
+      margin-bottom: 10px;
+
+      .zap-icon {
+        animation: pulseFlash 1.5s infinite;
+      }
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 6px;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+    }
+  }
+
+  .countdown-clock {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    @media (max-width: 860px) {
+      align-items: flex-start;
+    }
+
+    .clock-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      margin-bottom: 8px;
+    }
+
+    .clock-digits {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .digit-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-sm);
+        padding: 10px 14px;
+        min-width: 58px;
+        border-radius: var(--radius-xs);
+
+        .num {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: var(--color-text);
+          line-height: 1;
+        }
+
+        .unit {
+          font-size: 0.58rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          color: var(--color-muted);
+          margin-top: 4px;
+        }
+      }
+
+      .colon {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--color-secondary);
+      }
+    }
+  }
+}
+
+.flash-products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Premium Mobile Deals Card Slider with Snap and Peek (Auto-Adjustable Width & Height) */
+  @media (max-width: 768px) {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-bottom: 12px;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
+
+    /* Clean swipe track */
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+
+    .product-card {
+      /* Fluid auto-adjustable card width based on screen size */
+      flex: 0 0 clamp(200px, 68vw, 280px);
+      width: clamp(200px, 68vw, 280px);
+      height: auto;
+      scroll-snap-align: start;
+    }
+  }
+
+  @media (max-width: 480px) {
+    gap: 12px;
+
+    .product-card {
+      flex: 0 0 clamp(180px, 72vw, 250px);
+      width: clamp(180px, 72vw, 250px);
+      height: auto;
+    }
+  }
+}
+
+@keyframes pulseFlash {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.15);
+  }
+}
