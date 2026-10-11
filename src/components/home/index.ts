@@ -1,6 +1,9 @@
 export { HeroCarousel } from './HeroCarousel';
+export { AtelierTicker } from './AtelierTicker';
 export { CategoryGrid } from './CategoryGrid';
 export { TrendingSection } from './TrendingSection';
+export { RunwayLookbook } from './RunwayLookbook';
 export { EditorialBanner } from './EditorialBanner';
 export { NewArrivalsSection } from './NewArrivalsSection';
 export { FlashSaleSection } from './FlashSaleSection';
+export { MaisonAssurances } from './MaisonAssurances';

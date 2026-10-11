@@ -1,0 +1,76 @@
+@import "../../styles/variables.scss";
+
+.maison-assurances-section {
+  padding: 60px 0;
+  background: #fbf9f5;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.assurances-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .assurance-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    border-radius: var(--radius-xs);
+    background: transparent;
+    transition: transform var(--transition-normal);
+
+    &:hover {
+      transform: translateY(-2px);
+
+      .assurance-icon-circle {
+        background: var(--color-primary);
+        color: #d4af37;
+        border-color: var(--color-primary);
+      }
+    }
+
+    .assurance-icon-circle {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: var(--radius-full);
+      background: #ffffff;
+      border: 1px solid var(--color-border);
+      color: #9b7a42;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-xs);
+      transition: all var(--transition-normal);
+    }
+
+    .assurance-content {
+      h4 {
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin-bottom: 6px;
+      }
+
+      p {
+        font-size: 0.82rem;
+        color: var(--color-text-secondary);
+        line-height: 1.55;
+      }
+    }
+  }
+}
