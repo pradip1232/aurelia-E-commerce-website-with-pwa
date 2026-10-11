@@ -32,9 +32,44 @@ export const ProductListingPage: React.FC = () => {
     ? categorySlug.toUpperCase()
     : 'ALL CREATIONS';
 
-  // Compute Available Filter Options
-  const allBrands = useMemo(() => Array.from(new Set(MOCK_PRODUCTS.map((p) => p.brand))), []);
-  const allSizes = useMemo(() => Array.from(new Set(MOCK_PRODUCTS.flatMap((p) => p.sizes))), []);
+  // Collapsible accordion state for compact filter sidebar
+  const [collapsedSections, setCollapsedSections] = useState<Record<string, boolean>>({
+    brand: false,
+    price: false,
+    size: false,
+  });
+
+  const toggleSection = (section: string) => {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const SIZE_ORDER = [
+    'XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', '3XL',
+    '36', '37', '38', '38R', '39', '40', '40R', '41', '42', '42R', '43', '44', '44R', '45', '46',
+    'One Size', 'Standard',
+  ];
+
+  // Compute Available Filter Options (Sorted Alphabetically & Logically)
+  const allBrands = useMemo(() => {
+    return Array.from(new Set(MOCK_PRODUCTS.map((p) => p.brand))).sort((a, b) =>
+      a.localeCompare(b, undefined, { sensitivity: 'base' })
+    );
+  }, []);
+
+  const allSizes = useMemo(() => {
+    const uniqueSizes = Array.from(new Set(MOCK_PRODUCTS.flatMap((p) => p.sizes)));
+    return uniqueSizes.sort((a, b) => {
+      const idxA = SIZE_ORDER.indexOf(a);
+      const idxB = SIZE_ORDER.indexOf(b);
+      if (idxA !== -1 && idxB !== -1) return idxA - idxB;
+      if (idxA !== -1) return -1;
+      if (idxB !== -1) return 1;
+      return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });
+    });
+  }, []);
 
   // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
@@ -134,66 +169,102 @@ export const ProductListingPage: React.FC = () => {
               )}
             </div>
 
-            {/* Filter by Brand */}
+            {/* Filter by Brand (Sorted A-Z & Collapsible) */}
             <div className="filter-group">
-              <h4>MAISON & BRAND</h4>
-              <div className="filter-list">
-                {allBrands.map((brand) => (
-                  <label key={brand} className="filter-checkbox-row">
-                    <input
-                      type="checkbox"
-                      checked={selectedBrands.includes(brand)}
-                      onChange={(e) => {
-                        if (e.target.checked) setSelectedBrands([...selectedBrands, brand]);
-                        else setSelectedBrands(selectedBrands.filter((b) => b !== brand));
+              <button
+                type="button"
+                className="group-title-btn"
+                onClick={() => toggleSection('brand')}
+                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+              >
+                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
+                  MAISON & BRAND {selectedBrands.length > 0 && `(${selectedBrands.length})`}
+                </h4>
+                <ChevronDown size={14} style={{ transform: collapsedSections.brand ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+              </button>
+              {!collapsedSections.brand && (
+                <div className="filter-list" style={{ maxHeight: '140px', overflowY: 'auto' }}>
+                  {allBrands.map((brand) => (
+                    <label key={brand} className="filter-checkbox-row">
+                      <input
+                        type="checkbox"
+                        checked={selectedBrands.includes(brand)}
+                        onChange={(e) => {
+                          if (e.target.checked) setSelectedBrands([...selectedBrands, brand]);
+                          else setSelectedBrands(selectedBrands.filter((b) => b !== brand));
+                        }}
+                      />
+                      <span>{brand}</span>
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Filter by Price (Collapsible) */}
+            <div className="filter-group">
+              <button
+                type="button"
+                className="group-title-btn"
+                onClick={() => toggleSection('price')}
+                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+              >
+                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>MAXIMUM INVESTMENT</h4>
+                <ChevronDown size={14} style={{ transform: collapsedSections.price ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+              </button>
+              {!collapsedSections.price && (
+                <>
+                  <div className="price-header" style={{ marginTop: '6px' }}>
+                    <span className="price-val">₹{selectedPriceRange.toLocaleString('en-IN')}</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={1000}
+                    max={120000}
+                    step={2000}
+                    value={selectedPriceRange}
+                    onChange={(e) => setSelectedPriceRange(Number(e.target.value))}
+                    className="price-slider"
+                  />
+                </>
+              )}
+            </div>
+
+            {/* Filter by Size (Sorted & Collapsible) */}
+            <div className="filter-group">
+              <button
+                type="button"
+                className="group-title-btn"
+                onClick={() => toggleSection('size')}
+                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+              >
+                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
+                  SIZES {selectedSizes.length > 0 && `(${selectedSizes.length})`}
+                </h4>
+                <ChevronDown size={14} style={{ transform: collapsedSections.size ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+              </button>
+              {!collapsedSections.size && (
+                <div className="size-pill-grid" style={{ maxHeight: '120px', overflowY: 'auto', marginTop: '6px' }}>
+                  {allSizes.map((sz) => (
+                    <button
+                      key={sz}
+                      type="button"
+                      onClick={() => {
+                        if (selectedSizes.includes(sz)) setSelectedSizes(selectedSizes.filter((s) => s !== sz));
+                        else setSelectedSizes([...selectedSizes, sz]);
                       }}
-                    />
-                    <span>{brand}</span>
-                  </label>
-                ))}
-              </div>
-            </div>
-
-            {/* Filter by Price */}
-            <div className="filter-group">
-              <div className="price-header">
-                <h4>MAXIMUM INVESTMENT</h4>
-                <span className="price-val">₹{selectedPriceRange.toLocaleString('en-IN')}</span>
-              </div>
-              <input
-                type="range"
-                min={1000}
-                max={120000}
-                step={2000}
-                value={selectedPriceRange}
-                onChange={(e) => setSelectedPriceRange(Number(e.target.value))}
-                className="price-slider"
-              />
-            </div>
-
-            {/* Filter by Size */}
-            <div className="filter-group">
-              <h4>SIZES</h4>
-              <div className="size-pill-grid">
-                {allSizes.map((sz) => (
-                  <button
-                    key={sz}
-                    type="button"
-                    onClick={() => {
-                      if (selectedSizes.includes(sz)) setSelectedSizes(selectedSizes.filter((s) => s !== sz));
-                      else setSelectedSizes([...selectedSizes, sz]);
-                    }}
-                    className={`size-filter-pill ${selectedSizes.includes(sz) ? 'is-active' : ''}`}
-                  >
-                    {sz}
-                  </button>
-                ))}
-              </div>
+                      className={`size-filter-pill ${selectedSizes.includes(sz) ? 'is-active' : ''}`}
+                    >
+                      {sz}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Availability */}
             <div className="filter-group">
-              <h4>AVAILABILITY</h4>
+              <h4 style={{ margin: '0 0 6px 0', fontSize: '0.75rem' }}>AVAILABILITY</h4>
               <label className="filter-checkbox-row">
                 <input
                   type="checkbox"
