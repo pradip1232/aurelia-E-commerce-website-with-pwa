@@ -238,29 +238,16 @@ export const Header: React.FC = () => {
 
           {/* Action Icons (Search, Account, Wishlist, Cart) */}
           <div className="nav-actions">
-            {/* Search Trigger with Download Option */}
-            <div className="search-bar-pill-wrapper">
-              <button
-                onClick={openSearch}
-                className="action-icon-btn search-trigger"
-                aria-label="Open search dialog"
-              >
-                <Search size={18} />
-                <span className="search-hint">Search creations...</span>
-              </button>
-              {isInstallable && !isInstalled && (
-                <button
-                  type="button"
-                  onClick={promptInstall}
-                  className="search-bar-download-pill"
-                  title="Download & Install Aurelia App"
-                  aria-label="Download Aurelia App"
-                >
-                  <Download size={13} />
-                  <span>Download App</span>
-                </button>
-              )}
-            </div>
+            {/* Search Icon Trigger */}
+            <button
+              type="button"
+              onClick={openSearch}
+              className="action-icon-btn search-icon-btn"
+              title="Search creations"
+              aria-label="Open search dialog"
+            >
+              <Search size={20} />
+            </button>
 
             {/* Account Link */}
             <Link

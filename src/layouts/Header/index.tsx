@@ -214,30 +214,16 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
 
           {/* Action Icons */}
           <div className="atelier-header__actions">
-            {/* Search Trigger with Download Option */}
-            <div className="atelier-header__search-wrap">
-              <button
-                type="button"
-                onClick={openSearch}
-                className="atelier-header__search-btn"
-                aria-label="Open search dialog"
-              >
-                <Search size={18} />
-                <span className="atelier-header__search-hint">Search creations...</span>
-              </button>
-              {isInstallable && !isInstalled && (
-                <button
-                  type="button"
-                  onClick={promptInstall}
-                  className="atelier-header__download-pill"
-                  title="Download & Install Aurelia App"
-                  aria-label="Download Aurelia App"
-                >
-                  <Download size={13} />
-                  <span>Download App</span>
-                </button>
-              )}
-            </div>
+            {/* Search Icon Trigger */}
+            <button
+              type="button"
+              onClick={openSearch}
+              className="atelier-header__action-icon atelier-header__search-icon-btn"
+              title="Search creations"
+              aria-label="Open search dialog"
+            >
+              <Search size={20} />
+            </button>
 
             {/* Account Link */}
             <Link

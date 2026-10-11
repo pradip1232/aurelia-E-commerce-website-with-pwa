@@ -317,57 +317,16 @@
     }
   }
 
-  &__search-wrap {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #f5f5f4;
-    border-radius: var(--radius-full, 9999px);
-    padding: 0.25rem 0.6rem;
-  }
-
-  &__search-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  &__search-icon-btn {
     background: transparent;
     border: none;
-    color: var(--color-muted-foreground, #78716c);
     cursor: pointer;
-    font-family: inherit;
-    padding: 0.25rem;
-
-    &:hover {
-      color: var(--color-foreground, #1c1917);
-    }
-  }
-
-  &__search-hint {
-    display: none;
-    font-size: var(--text-xs, 0.75rem);
-
-    @include abs.mq('lg') {
-      display: inline;
-    }
-  }
-
-  &__download-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    background: var(--color-foreground, #1c1917);
-    color: #fff;
-    border: none;
-    padding: 0.3rem 0.65rem;
     border-radius: var(--radius-full, 9999px);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: background 0.15s ease;
+    transition: color 0.15s ease, transform 0.15s ease;
 
     &:hover {
-      background: #000;
+      color: var(--color-gold, #c5a880);
+      transform: translateY(-1px);
     }
   }
 
