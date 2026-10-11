@@ -171,17 +171,28 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter by Brand (Sorted A-Z & Collapsible) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('brand')}
-                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
-              >
-                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
-                  MAISON & BRAND {selectedBrands.length > 0 && `(${selectedBrands.length})`}
-                </h4>
-                <ChevronDown size={14} style={{ transform: collapsedSections.brand ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
-              </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('brand')}
+                  style={{ display: 'flex', justifyContent: 'space-between', flex: 1, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+                >
+                  <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
+                    MAISON & BRAND {selectedBrands.length > 0 && `(${selectedBrands.length})`}
+                  </h4>
+                  <ChevronDown size={14} style={{ transform: collapsedSections.brand ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+                </button>
+                {selectedBrands.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedBrands([])}
+                    style={{ fontSize: '0.68rem', color: '#c33', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', padding: '0 4px' }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
               {!collapsedSections.brand && (
                 <div className="filter-list" style={{ maxHeight: '140px', overflowY: 'auto' }}>
                   {allBrands.map((brand) => (
@@ -203,15 +214,26 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter by Price (Collapsible) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('price')}
-                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
-              >
-                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>MAXIMUM INVESTMENT</h4>
-                <ChevronDown size={14} style={{ transform: collapsedSections.price ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
-              </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('price')}
+                  style={{ display: 'flex', justifyContent: 'space-between', flex: 1, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+                >
+                  <h4 style={{ margin: 0, fontSize: '0.75rem' }}>MAXIMUM INVESTMENT</h4>
+                  <ChevronDown size={14} style={{ transform: collapsedSections.price ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+                </button>
+                {selectedPriceRange < 120000 && (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPriceRange(120000)}
+                    style={{ fontSize: '0.68rem', color: '#c33', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', padding: '0 4px' }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
               {!collapsedSections.price && (
                 <>
                   <div className="price-header" style={{ marginTop: '6px' }}>
@@ -232,17 +254,28 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter by Size (Sorted & Collapsible) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('size')}
-                style={{ display: 'flex', justifyContent: 'space-between', width: '100%', background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
-              >
-                <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
-                  SIZES {selectedSizes.length > 0 && `(${selectedSizes.length})`}
-                </h4>
-                <ChevronDown size={14} style={{ transform: collapsedSections.size ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
-              </button>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('size')}
+                  style={{ display: 'flex', justifyContent: 'space-between', flex: 1, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0', alignItems: 'center' }}
+                >
+                  <h4 style={{ margin: 0, fontSize: '0.75rem' }}>
+                    SIZES {selectedSizes.length > 0 && `(${selectedSizes.length})`}
+                  </h4>
+                  <ChevronDown size={14} style={{ transform: collapsedSections.size ? 'rotate(-90deg)' : 'none', transition: 'transform 0.2s' }} />
+                </button>
+                {selectedSizes.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setSelectedSizes([])}
+                    style={{ fontSize: '0.68rem', color: '#c33', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', padding: '0 4px' }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
               {!collapsedSections.size && (
                 <div className="size-pill-grid" style={{ maxHeight: '120px', overflowY: 'auto', marginTop: '6px' }}>
                   {allSizes.map((sz) => (
@@ -264,15 +297,25 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Availability */}
             <div className="filter-group">
-              <h4 style={{ margin: '0 0 6px 0', fontSize: '0.75rem' }}>AVAILABILITY</h4>
-              <label className="filter-checkbox-row">
-                <input
-                  type="checkbox"
-                  checked={inStockOnly}
-                  onChange={(e) => setInStockOnly(e.target.checked)}
-                />
-                <span>In Stock & Ready for Courier</span>
-              </label>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <label className="filter-checkbox-row">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                  />
+                  <span>In Stock & Ready for Courier</span>
+                </label>
+                {inStockOnly && (
+                  <button
+                    type="button"
+                    onClick={() => setInStockOnly(false)}
+                    style={{ fontSize: '0.68rem', color: '#c33', background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline', padding: '0 4px' }}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
             </div>
           </aside>
 

@@ -168,6 +168,11 @@ export const ProductListingPage: React.FC = () => {
               <SlidersHorizontal size={16} />
               <span>FILTERS {hasActiveFilters && `(Active)`}</span>
             </button>
+            {hasActiveFilters && (
+              <button onClick={resetFilters} className="btn-toolbar-clear">
+                Clear Filters
+              </button>
+            )}
             <span className="results-total">
               Showing <strong>{filteredProducts.length}</strong> creations
             </span>
@@ -232,23 +237,35 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter Group: Brands (Sorted A-Z & Scrollable) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('brand')}
-                aria-expanded={!collapsedSections.brand}
-              >
-                <span className="group-title">
-                  MAISON & BRAND
-                  {selectedBrands.length > 0 && (
-                    <span className="active-badge">{selectedBrands.length}</span>
-                  )}
-                </span>
-                <ChevronDown
-                  size={14}
-                  className={`accordion-chevron ${collapsedSections.brand ? 'collapsed' : ''}`}
-                />
-              </button>
+              <div className="group-title-row">
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('brand')}
+                  aria-expanded={!collapsedSections.brand}
+                >
+                  <span className="group-title">
+                    MAISON & BRAND
+                    {selectedBrands.length > 0 && (
+                      <span className="active-badge">{selectedBrands.length}</span>
+                    )}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`accordion-chevron ${collapsedSections.brand ? 'collapsed' : ''}`}
+                  />
+                </button>
+                {selectedBrands.length > 0 && (
+                  <button
+                    type="button"
+                    className="group-clear-btn"
+                    onClick={() => setSelectedBrands([])}
+                    title="Clear brand selections"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               {!collapsedSections.brand && (
                 <div className="checkbox-list scrollable-list">
@@ -275,23 +292,35 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter Group: Price Slider (Collapsible) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('price')}
-                aria-expanded={!collapsedSections.price}
-              >
-                <span className="group-title">
-                  MAX PRICE
-                  {selectedPriceRange < 120000 && (
-                    <span className="active-badge">₹{(selectedPriceRange / 1000).toFixed(0)}k</span>
-                  )}
-                </span>
-                <ChevronDown
-                  size={14}
-                  className={`accordion-chevron ${collapsedSections.price ? 'collapsed' : ''}`}
-                />
-              </button>
+              <div className="group-title-row">
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('price')}
+                  aria-expanded={!collapsedSections.price}
+                >
+                  <span className="group-title">
+                    MAX PRICE
+                    {selectedPriceRange < 120000 && (
+                      <span className="active-badge">₹{(selectedPriceRange / 1000).toFixed(0)}k</span>
+                    )}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`accordion-chevron ${collapsedSections.price ? 'collapsed' : ''}`}
+                  />
+                </button>
+                {selectedPriceRange < 120000 && (
+                  <button
+                    type="button"
+                    className="group-clear-btn"
+                    onClick={() => setSelectedPriceRange(120000)}
+                    title="Reset max price"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               {!collapsedSections.price && (
                 <div className="price-content">
@@ -317,23 +346,35 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter Group: Sizes (Sorted & Compact Pills) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('size')}
-                aria-expanded={!collapsedSections.size}
-              >
-                <span className="group-title">
-                  SIZE & FIT
-                  {selectedSizes.length > 0 && (
-                    <span className="active-badge">{selectedSizes.length}</span>
-                  )}
-                </span>
-                <ChevronDown
-                  size={14}
-                  className={`accordion-chevron ${collapsedSections.size ? 'collapsed' : ''}`}
-                />
-              </button>
+              <div className="group-title-row">
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('size')}
+                  aria-expanded={!collapsedSections.size}
+                >
+                  <span className="group-title">
+                    SIZE & FIT
+                    {selectedSizes.length > 0 && (
+                      <span className="active-badge">{selectedSizes.length}</span>
+                    )}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`accordion-chevron ${collapsedSections.size ? 'collapsed' : ''}`}
+                  />
+                </button>
+                {selectedSizes.length > 0 && (
+                  <button
+                    type="button"
+                    className="group-clear-btn"
+                    onClick={() => setSelectedSizes([])}
+                    title="Clear size selections"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               {!collapsedSections.size && (
                 <div className="size-chips-grid">
@@ -359,23 +400,35 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter Group: Minimum Rating (Collapsible) */}
             <div className="filter-group">
-              <button
-                type="button"
-                className="group-title-btn"
-                onClick={() => toggleSection('rating')}
-                aria-expanded={!collapsedSections.rating}
-              >
-                <span className="group-title">
-                  CLIENT RATING
-                  {minRating !== null && (
-                    <span className="active-badge">{minRating}★+</span>
-                  )}
-                </span>
-                <ChevronDown
-                  size={14}
-                  className={`accordion-chevron ${collapsedSections.rating ? 'collapsed' : ''}`}
-                />
-              </button>
+              <div className="group-title-row">
+                <button
+                  type="button"
+                  className="group-title-btn"
+                  onClick={() => toggleSection('rating')}
+                  aria-expanded={!collapsedSections.rating}
+                >
+                  <span className="group-title">
+                    CLIENT RATING
+                    {minRating !== null && (
+                      <span className="active-badge">{minRating}★+</span>
+                    )}
+                  </span>
+                  <ChevronDown
+                    size={14}
+                    className={`accordion-chevron ${collapsedSections.rating ? 'collapsed' : ''}`}
+                  />
+                </button>
+                {minRating !== null && (
+                  <button
+                    type="button"
+                    className="group-clear-btn"
+                    onClick={() => setMinRating(null)}
+                    title="Clear rating filter"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
 
               {!collapsedSections.rating && (
                 <div className="rating-radio-list">
@@ -402,15 +455,27 @@ export const ProductListingPage: React.FC = () => {
 
             {/* Filter Group: In Stock Only */}
             <div className="filter-group in-stock-group">
-              <label className="checkbox-label compact">
-                <input
-                  type="checkbox"
-                  checked={inStockOnly}
-                  onChange={(e) => setInStockOnly(e.target.checked)}
-                />
-                <span className="box" />
-                <span className="name">In Stock & Immediate Dispatch</span>
-              </label>
+              <div className="in-stock-row">
+                <label className="checkbox-label compact">
+                  <input
+                    type="checkbox"
+                    checked={inStockOnly}
+                    onChange={(e) => setInStockOnly(e.target.checked)}
+                  />
+                  <span className="box" />
+                  <span className="name">In Stock & Immediate Dispatch</span>
+                </label>
+                {inStockOnly && (
+                  <button
+                    type="button"
+                    className="group-clear-btn"
+                    onClick={() => setInStockOnly(false)}
+                    title="Clear stock filter"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
             </div>
 
             {/* Apply on Mobile button */}
@@ -426,6 +491,91 @@ export const ProductListingPage: React.FC = () => {
 
           {/* Products Grid / Listing */}
           <main className="plp-products-content">
+            {/* Active Filter Chips Bar */}
+            {hasActiveFilters && (
+              <div className="active-filters-chips-bar">
+                <span className="active-filters-label">Active:</span>
+                <div className="chips-list">
+                  {selectedBrands.map((brand) => (
+                    <span key={brand} className="filter-chip">
+                      <span>{brand}</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedBrands(selectedBrands.filter((b) => b !== brand))}
+                        aria-label={`Remove brand ${brand}`}
+                        title={`Remove ${brand}`}
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  ))}
+
+                  {selectedPriceRange < 120000 && (
+                    <span className="filter-chip">
+                      <span>Under ₹{selectedPriceRange.toLocaleString('en-IN')}</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedPriceRange(120000)}
+                        aria-label="Remove price filter"
+                        title="Remove price filter"
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  )}
+
+                  {selectedSizes.map((size) => (
+                    <span key={size} className="filter-chip">
+                      <span>Size: {size}</span>
+                      <button
+                        type="button"
+                        onClick={() => setSelectedSizes(selectedSizes.filter((s) => s !== size))}
+                        aria-label={`Remove size ${size}`}
+                        title={`Remove size ${size}`}
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  ))}
+
+                  {minRating !== null && (
+                    <span className="filter-chip">
+                      <span>{minRating}★ & Above</span>
+                      <button
+                        type="button"
+                        onClick={() => setMinRating(null)}
+                        aria-label="Remove rating filter"
+                        title="Remove rating filter"
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  )}
+
+                  {inStockOnly && (
+                    <span className="filter-chip">
+                      <span>In Stock</span>
+                      <button
+                        type="button"
+                        onClick={() => setInStockOnly(false)}
+                        aria-label="Remove stock filter"
+                        title="Remove stock filter"
+                      >
+                        <X size={12} />
+                      </button>
+                    </span>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={resetFilters}
+                    className="btn-clear-all-chips"
+                  >
+                    Clear All
+                  </button>
+                </div>
+              </div>
+            )}
             {filteredProducts.length === 0 ? (
               <div className="plp-empty-state">
                 <h3>No creations match your selected filters</h3>
