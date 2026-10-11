@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useCartStore } from '../../../stores/useCartStore';
 import { useWishlistStore } from '../../../stores/useWishlistStore';
 import { useUIStore } from '../../../stores/useUIStore';
+import Stack from '../../ui/Stack';
 import { X, Heart, Star, Check, ShieldCheck, Truck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useScrollLock } from '../../../hooks/useScrollLock';
@@ -61,7 +62,26 @@ export const QuickViewModal: React.FC = () => {
         <div className="atelier-quickview-body">
           {/* Gallery Preview */}
           <div className="atelier-quickview-gallery">
-            <div className="atelier-quickview-main-image">
+            {/* Mobile multiple image fan stack */}
+            {quickViewProduct.images.length > 1 && (
+              <div className="quickview-mobile-stack">
+                <div style={{ width: 230, height: 230, margin: '0 auto', position: 'relative' }}>
+                  <Stack
+                    layout="fan"
+                    sendToBackOnClick={true}
+                    cards={quickViewProduct.images.map((src, i) => (
+                      <img key={src} src={src} alt={`${quickViewProduct.name} angle ${i + 1}`} />
+                    ))}
+                    onChange={setActiveImageIndex}
+                  />
+                </div>
+                <p className="quickview-stack-hint">
+                  <span>✦ Tap to fan views ({activeImageIndex + 1}/{quickViewProduct.images.length})</span>
+                </p>
+              </div>
+            )}
+
+            <div className={`atelier-quickview-main-image ${quickViewProduct.images.length > 1 ? 'hide-on-mobile' : ''}`}>
               <img
                 src={quickViewProduct.images[activeImageIndex] || quickViewProduct.images[0]}
                 alt={quickViewProduct.name}

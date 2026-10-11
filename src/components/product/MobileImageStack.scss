@@ -1,0 +1,59 @@
+@import "../../styles/variables.scss";
+
+.mobile-image-stack-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.25rem 0;
+  user-select: none;
+  -webkit-user-select: none;
+
+  .mobile-image-stack-stage {
+    margin: 0 auto;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.25));
+  }
+
+  .mobile-image-stack-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 230px;
+    margin-top: 14px;
+    padding: 0 4px;
+  }
+
+  .mobile-image-stack-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+  }
+
+  .mobile-image-stack-counter {
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+}
+
+.mobile-single-image-wrap {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+
+  .mobile-single-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+}

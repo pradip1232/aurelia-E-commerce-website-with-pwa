@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Stack from '../../ui/Stack';
 import './index.scss';
 
 export interface ProductGalleryProps {
@@ -18,7 +19,26 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
 
   return (
     <div className={`atelier-product-gallery ${className}`}>
-      {/* Thumbnails on Desktop (Left Column) */}
+      {/* Mobile-Only Multiple Image Fanned Stack */}
+      {images.length > 1 && (
+        <div className="atelier-product-gallery__mobile-stack">
+          <div style={{ width: 230, height: 230, margin: '0 auto', position: 'relative' }}>
+            <Stack
+              layout="fan"
+              sendToBackOnClick={true}
+              cards={images.map((src, i) => (
+                <img key={src} src={src} alt={`${productName} view ${i + 1}`} />
+              ))}
+              onChange={setActiveIndex}
+            />
+          </div>
+          <p className="mobile-stack-hint">
+            <span>✦ Tap card to fan next view ({activeIndex + 1}/{images.length})</span>
+          </p>
+        </div>
+      )}
+
+      {/* Desktop Thumbnails (Left Column) */}
       {images.length > 1 && (
         <div className="atelier-product-gallery__thumbnails">
           {images.map((img, idx) => (
@@ -35,17 +55,17 @@ export const ProductGallery: React.FC<ProductGalleryProps> = ({
         </div>
       )}
 
-      {/* Main Image Stage */}
-      <div className="atelier-product-gallery__stage">
+      {/* Desktop & Single-Image Stage */}
+      <div className={`atelier-product-gallery__stage ${images.length > 1 ? 'hide-on-mobile' : ''}`}>
         <div className="atelier-product-gallery__main-image-wrap">
           <img
-            src={images[activeIndex]}
+            src={images[activeIndex] || images[0]}
             alt={`${productName} view ${activeIndex + 1}`}
             className="atelier-product-gallery__main-img"
           />
         </div>
 
-        {/* Mobile Dot Indicators */}
+        {/* Mobile Dot Indicators for fallback */}
         {images.length > 1 && (
           <div className="atelier-product-gallery__dots">
             {images.map((_, idx) => (
