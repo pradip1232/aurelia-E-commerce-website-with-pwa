@@ -1122,5 +1122,4 @@ export const CircularCarousel: React.FC<CircularCarouselProps> = ({
   );
 };
 
-export { CircularCarousel };
 export default CircularCarousel;

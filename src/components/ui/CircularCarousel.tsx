@@ -1,7 +1,4 @@
-import CircularCarousel, { CircularCarousel as CircularCarouselNamed } from './CircularCarousel/index';
-
-export default CircularCarousel;
-export { CircularCarouselNamed as CircularCarousel };
+export { default, CircularCarousel } from './CircularCarousel/index';
 export type {
   CircularCarouselItem,
   CircularCarouselProps,
