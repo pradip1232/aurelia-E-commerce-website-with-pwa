@@ -5,7 +5,6 @@ import { useCartStore } from '../stores/useCartStore';
 import { useWishlistStore } from '../stores/useWishlistStore';
 import { useUIStore } from '../stores/useUIStore';
 import { ProductCard } from '../components/product/ProductCard';
-import Stack from '../components/ui/Stack';
 import {
   Heart,
   Star,
@@ -136,26 +135,7 @@ export const ProductDetailPage: React.FC = () => {
         <div className="pdp-layout-grid">
           {/* 2. Gallery Showcase (Desktop Vertical Thumbs + Main High-Res) */}
           <div className="pdp-gallery-column">
-            {/* Mobile Multiple Image Stack (Fanned Card Stack) */}
-            {product.images.length > 1 && (
-              <div className="pdp-mobile-image-stack">
-                <div style={{ width: 230, height: 230, margin: '0 auto', position: 'relative' }}>
-                  <Stack
-                    layout="fan"
-                    sendToBackOnClick={true}
-                    cards={product.images.map((src, i) => (
-                      <img key={src} src={src} alt={`${product.name} perspective ${i + 1}`} />
-                    ))}
-                    onChange={setActiveImageIndex}
-                  />
-                </div>
-                <div className="mobile-stack-hint">
-                  <span>✦ Tap card to fan next angle ({activeImageIndex + 1}/{product.images.length})</span>
-                </div>
-              </div>
-            )}
-
-            {/* Thumbnails (Desktop) */}
+            {/* Thumbnails */}
             <div className="vertical-thumbnails">
               {product.images.map((img, idx) => (
                 <button

@@ -5,7 +5,6 @@ import {
   CategoryGrid,
   TrendingSection,
   RunwayLookbook,
-  CircularGallerySection,
   EditorialBanner,
   CraftsmanshipStackSection,
   MagicBentoSection,
@@ -63,12 +62,7 @@ export const HomePage: React.FC = () => {
       <RunwayLookbook />
 
       {/* =========================================================================
-          6. 3D ATELIER ROTUNDA: INTERACTIVE CYLINDRICAL CAROUSEL
-          ========================================================================= */}
-      <CircularGallerySection />
-
-      {/* =========================================================================
-          7. THE ATELIER STORY — HERITAGE, CRAFTSMANSHIP & METRICS
+          6. THE ATELIER STORY — HERITAGE, CRAFTSMANSHIP & METRICS
           ========================================================================= */}
       <EditorialBanner />
 

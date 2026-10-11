@@ -18,9 +18,6 @@ export type { ScrollStackProps, ScrollStackItemProps } from './ScrollStack';
 export { MagicBento, DEFAULT_ATELIER_CARDS } from './MagicBento';
 export { default as MagicBentoComponent } from './MagicBento';
 export type { BentoProps, BentoCardProps } from './MagicBento';
-export { Stack, DEFAULT_STACK_IMAGES } from './Stack';
-export { default as StackComponent } from './Stack';
-export type { StackProps, StackLayout } from './Stack';
 export type {
   CircularCarouselItem,
   CircularCarouselProps,

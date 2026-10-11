@@ -110,32 +110,4 @@
       background: var(--color-foreground, #1c1917);
     }
   }
-
-  &__mobile-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1.5rem 0 1rem 0;
-
-    @include abs.mq('md') {
-      display: none; // Only for mobile as requested!
-    }
-
-    .mobile-stack-hint {
-      margin-top: 14px;
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-secondary, #c5a880);
-      font-weight: 600;
-    }
-  }
-
-  &__stage.hide-on-mobile {
-    @media (max-width: 767px) {
-      display: none; // Replaced by tactile mobile stack on small devices
-    }
-  }
 }
