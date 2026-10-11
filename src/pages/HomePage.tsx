@@ -6,7 +6,6 @@ import {
   TrendingSection,
   RunwayLookbook,
   EditorialBanner,
-  CraftsmanshipStackSection,
   MagicBentoSection,
   NewArrivalsSection,
   FlashSaleSection,
@@ -65,11 +64,6 @@ export const HomePage: React.FC = () => {
           6. THE ATELIER STORY — HERITAGE, CRAFTSMANSHIP & METRICS
           ========================================================================= */}
       <EditorialBanner />
-
-      {/* =========================================================================
-          8. PILLARS OF HAUTE CRAFTSMANSHIP (SCROLL STACK ARCHIVE)
-          ========================================================================= */}
-      <CraftsmanshipStackSection />
 
       {/* =========================================================================
           9. THE MAISON REALMS (INTERACTIVE MAGIC BENTO GRID)

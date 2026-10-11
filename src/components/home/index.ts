@@ -7,5 +7,4 @@ export { EditorialBanner } from './EditorialBanner';
 export { NewArrivalsSection } from './NewArrivalsSection';
 export { FlashSaleSection } from './FlashSaleSection';
 export { MaisonAssurances } from './MaisonAssurances';
-export { CraftsmanshipStackSection } from './CraftsmanshipStackSection';
 export { MagicBentoSection } from './MagicBentoSection';
