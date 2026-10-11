@@ -1,0 +1,168 @@
+@import "../../styles/variables.scss";
+
+.magic-bento-section {
+  padding: 110px 0;
+  background: radial-gradient(circle at 50% 10%, #16181f 0%, #0e1014 60%, #090a0d 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(197, 168, 128, 0.18);
+  border-bottom: 1px solid rgba(197, 168, 128, 0.18);
+
+  .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+  }
+
+  .section-title-wrap {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 36px auto;
+
+    .eyebrow {
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: #c5a880;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+
+      .eyebrow-icon {
+        color: #d4af37;
+      }
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-size: 0.98rem;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 300;
+    }
+  }
+
+  .bento-theme-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(197, 168, 128, 0.2);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(12px);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      border-radius: var(--radius-md);
+      align-items: stretch;
+      padding: 12px;
+    }
+
+    .palette-pills {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+
+      .palette-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: transparent;
+        border: 1px solid transparent;
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        padding: 6px 14px;
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        .color-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          display: inline-block;
+
+          &.gold-dot {
+            background-color: #c5a880;
+            box-shadow: 0 0 8px rgba(197, 168, 128, 0.8);
+          }
+          &.sovereign-dot {
+            background-color: #d4af37;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.8);
+          }
+          &.amethyst-dot {
+            background-color: #8400ff;
+            box-shadow: 0 0 8px rgba(132, 0, 255, 0.8);
+          }
+        }
+
+        &:hover {
+          color: #ffffff;
+          background: rgba(255, 255, 255, 0.06);
+        }
+
+        &.active {
+          color: #121417;
+          background: #c5a880;
+          font-weight: 700;
+          border-color: #c5a880;
+          box-shadow: 0 2px 10px rgba(197, 168, 128, 0.35);
+
+          .color-dot {
+            border: 1px solid #121417;
+          }
+        }
+      }
+    }
+
+    .bento-features-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      color: rgba(197, 168, 128, 0.8);
+      font-weight: 600;
+
+      @media (max-width: 768px) {
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+  }
+
+  .magic-bento-display {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 72px 0;
+  }
+}

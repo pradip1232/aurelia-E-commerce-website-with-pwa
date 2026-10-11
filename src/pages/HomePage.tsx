@@ -7,6 +7,8 @@ import {
   RunwayLookbook,
   CircularGallerySection,
   EditorialBanner,
+  CraftsmanshipStackSection,
+  MagicBentoSection,
   NewArrivalsSection,
   FlashSaleSection,
   MaisonAssurances
@@ -71,7 +73,17 @@ export const HomePage: React.FC = () => {
       <EditorialBanner />
 
       {/* =========================================================================
-          7. NEW RUNWAY DROPS & EXCLUSIVE CLIENT PRIVILEGES
+          8. PILLARS OF HAUTE CRAFTSMANSHIP (SCROLL STACK ARCHIVE)
+          ========================================================================= */}
+      <CraftsmanshipStackSection />
+
+      {/* =========================================================================
+          9. THE MAISON REALMS (INTERACTIVE MAGIC BENTO GRID)
+          ========================================================================= */}
+      <MagicBentoSection />
+
+      {/* =========================================================================
+          10. NEW RUNWAY DROPS & EXCLUSIVE CLIENT PRIVILEGES
           ========================================================================= */}
       <NewArrivalsSection />
 

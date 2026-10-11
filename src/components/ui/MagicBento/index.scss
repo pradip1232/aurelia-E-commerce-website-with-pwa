@@ -1,0 +1,219 @@
+@import "../../../styles/variables.scss";
+
+.magic-bento-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+}
+
+.bento-section {
+  --glow-x: 50%;
+  --glow-y: 50%;
+  --glow-intensity: 0;
+  --glow-radius: 260px;
+  --glow-color: 197, 168, 128; // Default Aurelia Champagne Gold
+  --border-color: rgba(197, 168, 128, 0.22);
+  --background-dark: #121417;
+  --card-surface: #16181e;
+  --white: #ffffff;
+  --gold-primary: rgba(197, 168, 128, 1);
+  --gold-glow: rgba(197, 168, 128, 0.25);
+  --gold-border: rgba(197, 168, 128, 0.6);
+
+  position: relative;
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  user-select: none;
+}
+
+.card-responsive {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  width: 100%;
+  margin: 0 auto;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+
+    .card:nth-child(3) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .card:nth-child(4) {
+      grid-column: 1 / span 2;
+      grid-row: 2 / span 2;
+    }
+
+    .card:nth-child(6) {
+      grid-column: 4;
+      grid-row: 3;
+    }
+  }
+
+  @media (max-width: 639px) {
+    grid-template-columns: 1fr;
+    .card {
+      min-height: 190px !important;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 200px;
+  width: 100%;
+  max-width: 100%;
+  padding: 1.6rem;
+  border-radius: 22px;
+  border: 1px solid var(--border-color);
+  background-color: var(--card-surface);
+  color: var(--white);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(var(--glow-color), 0.15);
+    border-color: rgba(var(--glow-color), 0.5);
+  }
+
+  &--border-glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    background: radial-gradient(
+      var(--glow-radius) circle at var(--glow-x) var(--glow-y),
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.9)) 0%,
+      rgba(var(--glow-color), calc(var(--glow-intensity) * 0.4)) 35%,
+      transparent 70%
+    );
+    border-radius: inherit;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+  }
+
+  &--border-glow:hover::after {
+    opacity: 1;
+  }
+
+  &--border-glow:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45), 0 0 35px rgba(var(--glow-color), 0.25);
+  }
+
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 3;
+
+    .card__label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(var(--glow-color), 0.9);
+      background: rgba(var(--glow-color), 0.1);
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(var(--glow-color), 0.2);
+    }
+
+    .card__icon {
+      color: rgba(var(--glow-color), 0.85);
+      opacity: 0.8;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+  }
+
+  &:hover .card__header .card__icon {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 3;
+    margin-top: auto;
+
+    .card__title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin: 0 0 0.35rem 0;
+      color: #ffffff;
+    }
+
+    .card__description {
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 300;
+    }
+  }
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: rgba(var(--glow-color), 0.25);
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+.text-clamp-1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,117 @@
+@import "../../../styles/variables.scss";
+
+// ScrollStack Container and Items
+.scroll-stack-root {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+
+  &--container {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+
+    /* Custom subtle scrollbar */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 999px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(197, 168, 128, 0.35);
+      border-radius: 999px;
+      &:hover {
+        background: rgba(197, 168, 128, 0.6);
+      }
+    }
+  }
+
+  &--window {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.scroll-stack-inner {
+  position: relative;
+  padding-left: clamp(1rem, 6%, 5rem);
+  padding-right: clamp(1rem, 6%, 5rem);
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 640px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+.scroll-stack-slot {
+  position: sticky;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scroll-stack-item {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 20rem;
+  height: auto;
+  width: 100%;
+  transform-origin: top center;
+  border-radius: 28px;
+  padding: 2.5rem;
+  background: #ffffff;
+  color: #18181b;
+  will-change: transform, filter;
+  transition: box-shadow 0.25s ease;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  @media (prefers-color-scheme: dark) {
+    background: #18181b;
+    color: #fafafa;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Luxury dark theme variant */
+  &.theme-atelier,
+  &.theme-dark {
+    background: #15171c;
+    color: #ffffff;
+    border: 1px solid rgba(197, 168, 128, 0.2);
+
+    h2, h3, h4 {
+      color: #ffffff;
+      font-family: var(--font-display);
+    }
+
+    p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1.75rem 1.5rem;
+    border-radius: 20px;
+    min-height: 18rem;
+  }
+
+  .scroll-stack-item-dim {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: #000000;
+    opacity: var(--scroll-stack-dim, 0);
+    transition: opacity 0.1s linear;
+    z-index: 2;
+  }
+}
+
