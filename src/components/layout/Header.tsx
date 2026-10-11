@@ -31,9 +31,25 @@ export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY || document.documentElement.scrollTop;
+          setIsScrolled((prev) => {
+            // Hysteresis buffer to eliminate boundary flicker on scroll
+            if (!prev && scrollY > 45) return true;
+            if (prev && scrollY < 20) return false;
+            return prev;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -46,7 +62,12 @@ export const Header: React.FC = () => {
     : null;
 
   return (
-    <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+    <div
+      className={`site-header-wrapper ${isScrolled ? 'is-scrolled' : ''} ${
+        !announcementDismissed ? 'has-announcement' : ''
+      }`}
+    >
+      <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
       {/* 1. Top Announcement Bar */}
       {!announcementDismissed && (
         <div className="announcement-bar">
@@ -358,6 +379,7 @@ export const Header: React.FC = () => {
         </div>
       )}
     </header>
+    </div>
   );
 };
 
