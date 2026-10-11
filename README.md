@@ -170,31 +170,44 @@
 
 ### Home Page (`/`)
 * **Component**: [`HomePage.tsx`](file:///F:/SMC/Clone/src/pages/HomePage.tsx)
-* **Functions & Features**:
+* **Complete Redesigned Architecture (11 Unified Luxury Editorial Sections)**:
   1. **Section 1: Cinematic Hero Campaign (`HeroCarousel.tsx`)**:
      - High-resolution editorial photography featuring the new SS26 Haute Prêt-à-Porter campaign banner (`/images/campaigns/hero-banner-ss26.png`).
      - Split-word text reveal animations with staggered keyframe timing.
      - Mouse-movement subtle parallax depth and smooth Ken Burns image scaling.
      - Accessible playback controls with Play/Pause toggle, previous/next navigation buttons, slide numbers (`01 / 04`), and animated linear progress fill indicators.
      - Touch swipe gesture support for mobile devices.
-  2. **Section 2: Curated Atelier Collections (`CategoryGrid.tsx`)**:
+  2. **Section 2: Continuous Atelier Ticker & Salon Marquee (`AtelierTicker.tsx`)**:
+     - Infinite smooth marquee ticker displaying real-time runway themes, noble fiber disclosures, and white-glove air courier guarantees.
+  3. **Section 3: Curated Atelier Universes & Spheres (`CategoryGrid.tsx`)**:
      - 13 catalog universes with interactive category filter tabs (*Featured Mosaic*, *Couture & Footwear*, *Timepieces & Jewels*, *Leathergoods & Maison*, *View All 13 Realms*).
      - Staggered clip-path entrance reveals with hover scale and luxury typography metadata.
      - Interactive universe quick-links bar at the section footer for rapid catalog traversal.
-  3. **Section 3: Trending Creations (`TrendingSection.tsx`)**:
+  4. **Section 4: Trending Signatures & Curated Creations (`TrendingSection.tsx`)**:
      - Reusable product cards with photography, INR prices, ratings, badges, wishlist toggle, and quick-view support.
      - Dual view modes: smooth horizontal snap carousel with navigation arrows, or responsive 4-column product grid.
      - Functional luxury category switcher (*All Signatures*, *Men's*, *Women's*, *Timepieces*, *Leathergoods*, *Jewellery*).
-  4. **Section 4: The Atelier Story — Editorial Showcase (`EditorialBanner.tsx`)**:
+  5. **Section 5: SS26 Runway Lookbook: L'Atelier en Mouvement (`RunwayLookbook.tsx`)**:
+     - High-fashion runway lookbook stage with multi-look carousel.
+     - Shoppable ensemble breakdown detailing key pieces and exact prices.
+     - Direct "Shop This Ensemble" and "View Full Runway" CTAs.
+  6. **Section 6: The Atelier Story — Heritage & Master Craftsmanship (`EditorialBanner.tsx`)**:
      - Asymmetrical luxury editorial layout with dual parallax imagery (master pattern-making + inset noble textile detail with Florentine wax seal).
      - Storytelling on craftsmanship, noble materials, and traceable origin.
      - Craftsmanship pillars and live metrics ticker (*98+ Master Craftsmen*, *100% Noble Fibers*, *48H White-Glove Dispatch*).
      - Actionable CTA leading to the `/about` heritage chronicle.
-  5. **Section 5: New Arrivals & Exclusive Offers (`NewArrivalsSection.tsx` & `FlashSaleSection.tsx`)**:
+  7. **Section 7: New Runway Drops & Client Privileges (`NewArrivalsSection.tsx`)**:
      - Dedicated Spring 2026 inaugural drop showcase with category filters.
      - Exclusive client privilege banner with one-click copyable promo code `LUXURY20` (20% off above ₹25,000).
+  8. **Section 8: Seasonal Private Salon Acquisitions (`FlashSaleSection.tsx`)**:
      - Private Salon Privileges with genuine, transparent countdown timer (closing at end of day, no misleading urgency or fake stock claims).
-     - Verified patron testimonials and acquisitions of distinction.
+     - Curated archival masterpieces with preferential acquisition privileges.
+  9. **Section 9: Maison Assurances & White-Glove Concierge (`MaisonAssurances.tsx`)**:
+     - Four distinct client assurances: White-Glove Air Courier, Bespoke Monogramming, Cryptographic Provenance, and Private Atelier Styling.
+  10. **Section 10: Voices of Our Clientele (`patron-testimonials`)**:
+      - Verified patron reviews with provenance stamps, locations (Mumbai, Delhi, Bengaluru), and 5-star ratings.
+  11. **Section 11: Private Salon VIP Invitation (`private-salon-invite-section`)**:
+      - Confidential Inner Circle membership registration card with instant interactive toast confirmation and private client perks.
 
 ---
 
