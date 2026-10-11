@@ -1,0 +1,235 @@
+@import "../../../styles/variables.scss";
+
+.circular-carousel-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  user-select: none;
+  overflow: hidden;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &[data-axis="x"] {
+    touch-action: pan-x;
+  }
+
+  &[data-draggable] {
+    cursor: grab;
+  }
+
+  &[data-dragging] {
+    cursor: grabbing;
+  }
+
+  &:focus-visible {
+    box-shadow: inset 0 0 0 2px rgba(212, 175, 55, 0.6);
+  }
+
+  .cc-mask-layer {
+    position: absolute;
+    inset: 0;
+  }
+
+  .cc-stage {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 450ms ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &[data-ready] .cc-stage {
+    opacity: 1;
+  }
+
+  .cc-camera {
+    position: relative;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+  }
+
+  .cc-ring {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+  }
+
+  .cc-card-anchor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    transform-style: preserve-3d;
+  }
+
+  .cc-tile {
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    outline: 1px solid transparent;
+
+    .cc-tile-frame {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+      img.cc-photo {
+        pointer-events: none;
+        position: absolute;
+        display: block;
+        max-width: none;
+        user-select: none;
+        object-fit: cover;
+        -webkit-user-drag: none;
+      }
+
+      .cc-inner-shade {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        background: #000000;
+        opacity: var(--cc-inner, 0.4);
+      }
+
+      .cc-depth-fade {
+        pointer-events: none;
+        position: absolute;
+        inset: 0;
+        background: var(--cc-fade, #000000);
+        opacity: var(--cc-depth, 0);
+      }
+    }
+  }
+
+  .cc-captions-bar {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 0 16px;
+    text-align: center;
+    animation: circular-carousel-reveal 900ms ease both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+
+    .cc-caption-text {
+      display: flex;
+      max-width: 100%;
+      flex-direction: column;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: #ffffff;
+      animation: circular-carousel-title 520ms cubic-bezier(0.22, 1, 0.36, 1);
+
+      @media (prefers-reduced-motion: reduce) {
+        animation: none;
+      }
+
+      .cc-subtitle {
+        font-size: 12px;
+        font-weight: 400;
+        opacity: 0.65;
+        color: #d4af37;
+        margin-top: 2px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+    }
+
+    .cc-digits-counter {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 12px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+      color: #e5dec9;
+      opacity: 0.6;
+    }
+  }
+
+  .cc-digit-roller {
+    display: inline-block;
+    height: 1em;
+    overflow: hidden;
+
+    .cc-roller-strip {
+      display: flex;
+      flex-direction: column;
+      transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+
+      @media (prefers-reduced-motion: reduce) {
+        transition: none;
+      }
+
+      span {
+        height: 1em;
+      }
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@keyframes circular-carousel-title {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes circular-carousel-leave {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes circular-carousel-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
