@@ -7,6 +7,7 @@ import { SearchOverlay } from '../modals/SearchOverlay';
 import { QuickViewModal } from '../modals/QuickViewModal';
 import { CartDrawer } from '../cart/CartDrawer';
 import { ToastContainer } from '../common/ToastContainer';
+import { CouturePreloader } from '../common/CouturePreloader';
 import { PWAInstallPrompt, IOSInstallGuide, NetworkStatusBar, PWAUpdateToast } from '../../pwa';
 
 export const Layout: React.FC = () => {
@@ -19,6 +20,9 @@ export const Layout: React.FC = () => {
 
   return (
     <div className="app-root-layout">
+      {/* Animated Couture Haute Runway Preloader */}
+      <CouturePreloader />
+
       <Header />
       <main className="main-content-flow">
         <Outlet />

@@ -55,6 +55,14 @@ export const Header: React.FC = () => {
               COMPLIMENTARY WHITE-GLOVE AIR DELIVERY ON ORDERS ABOVE ₹999 • DISCOVER SS26 PRÊT-À-PORTER
             </span>
             <button
+              type="button"
+              className="btn-replay-intro"
+              onClick={() => window.dispatchEvent(new CustomEvent('replay-couture-intro'))}
+              title="Replay Haute Couture Intro Presentation"
+            >
+              ✦ INTRO
+            </button>
+            <button
               onClick={() => setAnnouncementDismissed(true)}
               className="dismiss-announcement-btn"
               aria-label="Dismiss announcement"
